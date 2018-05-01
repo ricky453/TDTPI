@@ -8,39 +8,126 @@ class Tablawc extends HTMLElement{
 	connectedCallback(){
 
 		let shadowRoot=this.attachShadow({mode:'open'});
+		
+		let atras=document.createElement('button');
+		atras.innerText='<';
+		atras.setAttribute('id', 'atras');
+		let siguiente=document.createElement('button');
+		siguiente.innerText='>';
+		siguiente.setAttribute('id', 'siguiente');
+		let ultimo=document.createElement('input');
+		let primero=document.createElement('input');
 
+
+		let total=0;
 		
 
 		let template=document.getElementById('tablas');
 
 		let templateContent=template.content;
+		let alte=0;
+		let filas=0;
+		let columnas=10;
+		let tope=true;
+		
+		let promesa = this.path(`http://localhost:7070/MantenimientoWebApp-web-1.0-SNAPSHOT/webresources/marca/getMarca`);
 
+		promesa.then(data=>{
+			let cont=this.tabla(data,true,false,0);
+			shadowRoot.appendChild(atras);
+			shadowRoot.appendChild(siguiente);
+			shadowRoot.appendChild(cont);
+		})
+
+        siguiente.addEventListener('click', e=>{
+        	
+	        	let hijo=document.querySelector('tabla-wc').shadowRoot.querySelector('#micontainer');
+	        	shadowRoot.removeChild(hijo);
+
+	        	promesa.then(data=>{
+	        		alte=alte+2;
+				let cont=this.tabla(data,false,true,alte);
+				
+				shadowRoot.appendChild(cont);
+				})
+        
+        })
+
+
+        atras.addEventListener('click', e=>{
+        	let hijo=document.querySelector('tabla-wc').shadowRoot.querySelector('#micontainer');
+        	shadowRoot.removeChild(hijo);
+        	promesa.then(data=>{
+        		alte=alte-2;
+			let cont=this.tabla(data,false,false,alte);
+			
+
+			shadowRoot.appendChild(cont);
+		})
+        })
+		
+		var clone=document.importNode(templateContent, true);
+		
 		
 
-		let celda2=document.createElement('td');
-		celda2.setAttribute('slot', 'datoss');
-		celda2.innerText='lio';
-		let jsonObjects='';
+		shadowRoot.appendChild(clone);
+		
+	}
+
+	tabla(json,primero,sig,alterador){
+
+		let jsonObjects=json;
+		if (primero==true) {
+			this.total=jsonObjects.length;
+			this.total=this.total-2;
+			this.filas=jsonObjects.length-this.total;
+			
+			
+		}else if(sig==true){
+			
+				this.filas=this.filas+2;
+			
+			
+			if (this.filas>jsonObjects.length) {
+				let diferencia=this.filas-jsonObjects.length;
+				console.log(diferencia);
+				if (diferencia==1) {
+					this.filas=this.filas-1;
+					this.tope=false;
+					console.log(this.tope);
+					
+				}else{
+				
+				}
+				
+			}
+		}else if (sig==false) {
+			this.filas=this.filas-2;
+			if (this.filas>jsonObjects.length) {
+				let diferencia=jsonObjects.length-this.filas;
+				if (diferencia==1) {
+					this.filas=this.filas+1;
+					
+				}else{
+					this.filas=this.filas+2;
+				}
+				
+			}else{
+				
+			}
+		}
+
+
 		let arregloCabecera= new Array();
-		let filas=10;
-		let columnas=10;
+		let contenedor=document.createElement('div');
+		contenedor.setAttribute('id', 'micontainer');
 		let tabla=document.createElement('table');
 		tabla.setAttribute('id', 'tabla');
 		
-
-		let val=fetch('http://localhost:7070/MantenimientoWeb-web-1.0-SNAPSHOT/webresources/marca')
-		.then(function (res){
-            return res.json();
-        })
-        .then(function (data){
-        	jsonObjects=data;
-        	
-        	console.log(data);
-
-        	let contador=0;
+		let contador=0;
         	let tr=document.createElement('tr');
 			for (var key in jsonObjects[contador]) {
-				   console.log(key);
+				   
 				   let th=document.createElement('th');
 				   th.innerText=key;
 				    arregloCabecera[contador]=key;
@@ -49,39 +136,31 @@ class Tablawc extends HTMLElement{
 		    }
 		    tabla.appendChild(tr);
 
-        	for(var fila=0; fila<jsonObjects.length;fila++){
+        	for(var fila=0+alterador; fila<this.filas;fila++){
 
         	let filas=document.createElement('tr');
 			filas.setAttribute('slot', 'dato');
 					for(var columna=0;columna<jsonObjects.length;columna++){
-						console.log('entrooo');
+						
 							let celda=document.createElement('td');
 							celda.setAttribute('slot', 'datoss');
 							celda.innerText=jsonObjects[fila][arregloCabecera[columna]];
-							console.log(celda.innerText);
+							
 							filas.appendChild(celda);
 							
 													
 					}
-					templateContent.querySelector('#tabla').appendChild(filas);
 					tabla.appendChild(filas);
-				}     
+				} 
+				contenedor.appendChild(tabla);  
+				return contenedor;  
 
-        	
-
-	        
-	        
-        });
-
-
-		
-
-		var clone=document.importNode(templateContent, true);
-		
-
-		shadowRoot.appendChild(clone);
-		shadowRoot.appendChild(tabla);
 	}
+
+	path(URI){
+        return fetch(URI)  
+            .then(r => r.json());
+    } 
 
 }
 

@@ -9,12 +9,18 @@
 <template id="tablas">
 	
 	<style>
+	
+		#micontainer{
+			
+			margin: auto;
+			overflow-x:auto;
+		}
 		#tabla{
 			background: #fff;
 			border-collapse: collapse;
 			font-size: 1.5em;
 			margin:auto;
-			width: 100%;
+			min-width: 1000px;
 		}
 
 		#tabla tr td{
@@ -52,6 +58,15 @@
 			background-color: #ddd;
 		}
 
+		#atras,#siguiente{
+			padding: 15px;
+			
+			margin-left: auto;
+		}
+		
+
+		
+
 
 	</style>
 
@@ -64,18 +79,13 @@
 	</table>
 </template>
 
-	<!-- <script src='ListComplete.js'></script>
-	<script src='DetallesMarca.js'></script> -->
+	
 	<script src='Botonwc.js'></script>
 	<script src="./Tablawc.js"></script>
 
 	<h1>Mostrando elementos de marca resource</h1>
 
-	<!-- <lista-comp>
-		
-	</lista-comp> -->
-
-	<!-- <boton-wc></boton-wc> -->
+	
 
 	<tabla-wc>
 	
@@ -83,49 +93,12 @@
 
 
 	<script  type='module' >
-		// import MarcaResourceClient from './MarcaResourceClient.js';
 		
-		// var mrc=new MarcaResourceClient();
-		// var mijson=new Array();
-		// var complete=document.querySelector('lista-comp');
-		// var botonwc=document.querySelector('boton-wc');
-		
-		// var jsonObjects='';
-
-		// var x=mrc.findByName()
-		// .then(function (res){
-  //           return res.json();
-  //       })
-  //       .then(function (data){
-  //       	jsonObjects=data;
-  //       	console.log(data);
-
-  //       	for (var key in jsonObjects[2]) {
-  //       		console.log(key);
-  //       	}
-
-
-	 //        console.log(jsonObjects);
-	 //        console.log(jsonObjects[0].marca);
-	 //        complete.setJsonObjects(data);
-	 //        botonwc.setJsonObjects(data);
-	 //        let i=0;
-	 //        data.forEach( function(marca) {
-	 //        	mijson[i]=marca.marca;
-	 //        	i++;
-	 //        });
-	 //        console.log(mijson);
-	        
-	 //       //  complete.setOpciones(mijson);
-	 //       //  botonwc.setOpciones(mijson);
-  //       // })        
-
-  //       let cont=0;
-        
 
 		
 				
 	</script>
-		
+
+	
 </body>
 </html>
