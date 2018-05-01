@@ -1,0 +1,49 @@
+version: "3.1"
+services:
+
+ frontend:
+   image: 'apachetpi'
+   build: ./Apache/.
+   depends_on:
+     - web
+   ports:
+     - "70:80"
+   networks:
+     - webnet
+ db:
+   image: 'postgrestpi'
+   build: ./PostgreSQL/.
+   container_name: 'postgresman'
+   environment:
+     POSTGRES_USER: postgres
+     POSTGRES_PASSWORD: 1234
+     POSTGRES_DB: MantenimientoTPI
+   ports:
+     - '5430:5432'
+   restart: always
+   volumes:
+     - postgresDataM:/var/lib/postgresql/data 
+   networks:
+     - webnet
+
+ web:
+   image: 'paymitpi'
+   build: ./PayaraMicro/.
+   container_name: 'payaramicroman'
+   ports:
+     - "9090:8080"
+     - "7070:8181"
+     - "4848:4848"
+   depends_on:
+     - db
+   environment:
+     DB_HOST: db
+   networks:
+     - webnet
+
+networks:
+ webnet:
+
+volumes:
+ postgresDataM:
+

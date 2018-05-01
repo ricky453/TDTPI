@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mostrando autocomplete</title>
+	
+</head>
+<body>
+<template id="tablas">
+	
+	<style>
+		#tabla{
+			background: #fff;
+			border-collapse: collapse;
+			font-size: 1.5em;
+			margin:auto;
+			width: 100%;
+		}
+
+		#tabla tr td{
+			padding: 10px;
+		}
+
+		#tabla tr th{
+			padding: 10px;
+			/*background: #22648C;*/
+		}
+
+		#tabla td,th{
+			border: 2px solid black;
+			padding: 20px;
+		}
+
+		#tabla tr:hover{
+			background: #30B676;
+		}
+
+		#tabla tr td:hover{
+			background: #57DAA4;
+			border: solid 2px #1C7953;
+			cursor: pointer;
+			color: #FFFFFF;
+		}
+
+		#tabla tr th{
+			background: #1B882D;
+			border-bottom: solid 3.5px #1C431B;
+			color: #FFFFFF;
+		}
+
+		tr:nth-child(even){
+			background-color: #ddd;
+		}
+
+
+	</style>
+
+
+	<table id="tabla">
+		<slot name='dato'>
+			<slot name='datoss'></slot>
+		</slot>
+			
+	</table>
+</template>
+
+	<!-- <script src='ListComplete.js'></script>
+	<script src='DetallesMarca.js'></script> -->
+	<script src='Botonwc.js'></script>
+	<script src="./Tablawc.js"></script>
+
+	<h1>Mostrando elementos de marca resource</h1>
+
+	<!-- <lista-comp>
+		
+	</lista-comp> -->
+
+	<!-- <boton-wc></boton-wc> -->
+
+	<tabla-wc>
+	
+</tabla-wc>
+
+
+	<script  type='module' >
+		// import MarcaResourceClient from './MarcaResourceClient.js';
+		
+		// var mrc=new MarcaResourceClient();
+		// var mijson=new Array();
+		// var complete=document.querySelector('lista-comp');
+		// var botonwc=document.querySelector('boton-wc');
+		
+		// var jsonObjects='';
+
+		// var x=mrc.findByName()
+		// .then(function (res){
+  //           return res.json();
+  //       })
+  //       .then(function (data){
+  //       	jsonObjects=data;
+  //       	console.log(data);
+
+  //       	for (var key in jsonObjects[2]) {
+  //       		console.log(key);
+  //       	}
+
+
+	 //        console.log(jsonObjects);
+	 //        console.log(jsonObjects[0].marca);
+	 //        complete.setJsonObjects(data);
+	 //        botonwc.setJsonObjects(data);
+	 //        let i=0;
+	 //        data.forEach( function(marca) {
+	 //        	mijson[i]=marca.marca;
+	 //        	i++;
+	 //        });
+	 //        console.log(mijson);
+	        
+	 //       //  complete.setOpciones(mijson);
+	 //       //  botonwc.setOpciones(mijson);
+  //       // })        
+
+  //       let cont=0;
+        
+
+		
+				
+	</script>
+		
+</body>
+</html>
