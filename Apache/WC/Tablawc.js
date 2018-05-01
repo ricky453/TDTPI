@@ -30,7 +30,7 @@ class Tablawc extends HTMLElement{
 		let columnas=10;
 		let tope=true;
 		
-		let promesa = this.path(`http://localhost:7070/MantenimientoWebApp-web-1.0-SNAPSHOT/webresources/marca/getMarca`);
+		let promesa = this.path(`http://localhost:7070/MantenimientoWeb-web-1.0-SNAPSHOT/webresources/marca`);
 
 		promesa.then(data=>{
 			let cont=this.tabla(data,true,false,0);
