@@ -10,10 +10,10 @@ class Tablawc extends HTMLElement{
 		let shadowRoot=this.attachShadow({mode:'open'});
 		
 		let atras=document.createElement('button');
-		atras.innerText='<';
+		atras.innerText='Atras';
 		atras.setAttribute('id', 'atras');
 		let siguiente=document.createElement('button');
-		siguiente.innerText='>';
+		siguiente.innerText='Siguiente';
 		siguiente.setAttribute('id', 'siguiente');
 		let ultimo=document.createElement('input');
 		let primero=document.createElement('input');
@@ -78,9 +78,10 @@ class Tablawc extends HTMLElement{
 
 		let jsonObjects=json;
 		if (primero==true) {
+			let mostrar = jsonObjects.length-8;
 			this.total=jsonObjects.length;
 			this.total=this.total-2;
-			this.filas=jsonObjects.length-this.total;
+			this.filas=jsonObjects.length-mostrar;
 			
 			
 		}else if(sig==true){
@@ -140,7 +141,7 @@ class Tablawc extends HTMLElement{
 
         	let filas=document.createElement('tr');
 			filas.setAttribute('slot', 'dato');
-					for(var columna=0;columna<jsonObjects.length;columna++){
+					for(var columna=0;columna<arregloCabecera.length;columna++){
 						
 							let celda=document.createElement('td');
 							celda.setAttribute('slot', 'datoss');
