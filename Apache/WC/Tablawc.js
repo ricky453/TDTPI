@@ -126,42 +126,67 @@ class Tablawc extends HTMLElement{
 		tabla.setAttribute('id', 'tabla');
 		
 		let contador=0;
+                let header = [];
+                let saltar;
         	let tr=document.createElement('tr');
-			for (var key in jsonObjects[contador]) {
-				   
+                for(let cabecera in jsonObjects[contador]){ 
+                            if(header.indexOf(cabecera)===-1){
+                            header.push(cabecera);
+                            if(cabecera.indexOf("detalle")>-1){//para buscar cabeceras que tengan detalle
+                                saltar=cabecera;
+
+                            }                                                                
+                        } 
+                }   
+                let borrar=header.indexOf(saltar); 
+                header.splice(borrar, 1); //se elimina la cabecera detalle
+			for (let key in header) {
+                            console.log(header);
+                            
 				   let th=document.createElement('th');
-				   th.innerText=key;
-				    arregloCabecera[contador]=key;
+				   th.innerText=header[key];
+				    arregloCabecera[contador]=header[key];
 				    contador++;
 				    tr.appendChild(th);
 		    }
 		    tabla.appendChild(tr);
 
+ 
+                
+                
         	for(var fila=0+alterador; fila<this.filas;fila++){
+                    let filas=document.createElement('tr');
+	            filas.setAttribute('slot', 'dato');
+                    for(var columna=0;columna<header.length;columna++){
 
-        	let filas=document.createElement('tr');
-			filas.setAttribute('slot', 'dato');
-					for(var columna=0;columna<arregloCabecera.length;columna++){
-						
-							let celda=document.createElement('td');
-							celda.setAttribute('slot', 'datoss');
-							celda.innerText=jsonObjects[fila][arregloCabecera[columna]];
-							
-							filas.appendChild(celda);
-							
-													
-					}
-					tabla.appendChild(filas);
-				} 
-				contenedor.appendChild(tabla);  
-				return contenedor;  
+
+                                    let celda=document.createElement('td');
+                                    celda.setAttribute('slot', 'datos');
+                                    celda.innerText=jsonObjects[fila][header[columna]];
+                                    filas.appendChild(celda);
+                                    celda.contentEditable="true";
+
+
+
+                    }
+                    tabla.appendChild(filas);
+            } 
+            contenedor.appendChild(tabla);  
+            return contenedor;  
 
 	}
 
 	path(URI){
         return fetch(URI)  
             .then(r => r.json());
-    } 
+    }
+    pathActualizar(URI){
+        return fetch(URI, {
+            method: 'PUT',
+            body: datos
+        })
+        .then(r=> r.json());
+    }
 
 }
 
