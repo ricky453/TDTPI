@@ -52,7 +52,7 @@ class Tablawc extends HTMLElement{
 		let promesa = this.path(`http://localhost:7070/MantenimientoWeb-web-1.0-SNAPSHOT/webresources/marca`);
 
 		promesa.then(data=>{
-			let cont=this.tabla(data,true,false,0);
+			let cont=this.tabla(data,true,false,0,5);
 			shadowRoot.appendChild(atras);
                         shadowRoot.appendChild(cmbPaginado);
 			shadowRoot.appendChild(siguiente);
@@ -66,8 +66,8 @@ class Tablawc extends HTMLElement{
 	        	shadowRoot.removeChild(hijo);
 
 	        	promesa.then(data=>{
-	        		alte=alte+2;
-				let cont=this.tabla(data,false,true,alte);
+	        		alte=alte+num;
+				let cont=this.tabla(data,false,true,alte,num);
 				
 				shadowRoot.appendChild(cont);
 				})
@@ -79,8 +79,8 @@ class Tablawc extends HTMLElement{
         	let hijo=document.querySelector('tabla-wc').shadowRoot.querySelector('#micontainer');
         	shadowRoot.removeChild(hijo);
         	promesa.then(data=>{
-        		alte=alte-2;
-			let cont=this.tabla(data,false,false,alte);
+        		alte=alte-num;
+			let cont=this.tabla(data,false,false,alte,num);
 			
 
 			shadowRoot.appendChild(cont);
@@ -88,7 +88,18 @@ class Tablawc extends HTMLElement{
         })
         
         cmbPaginado.onchange = () => {
+            let hijo=document.querySelector('tabla-wc').shadowRoot.querySelector('#micontainer');
+            console.log(hijo);
              num = parseInt(cmbPaginado.options[cmbPaginado.selectedIndex].value);
+             promesa.then(data=>{
+                 alte=0;
+                 //let cont;
+                 //shadowRoot.appendChild(cont);
+                 let cont = this.tabla(data,true,false,alte,num);
+
+                 //let cont=this.tabla(data,false,false,alte);	
+		shadowRoot.replaceChild(cont, hijo);
+             })
              
              console.log(num);
             
@@ -103,34 +114,36 @@ class Tablawc extends HTMLElement{
 	}
         
 
-	tabla(json,primero,sig,alterador){
-            let cmbPaginado = document.querySelector('tabla-wc').shadowRoot.querySelector('#cmbPaginado');
-            let num = 5;
+	tabla(json,primero,sig,alterador, pag){
             let siguiente = document.querySelector('tabla-wc').shadowRoot.querySelector('#siguiente');
             let atras = document.querySelector('tabla-wc').shadowRoot.querySelector('#atras');
-
-                //console.log(document.querySelector('tabla-wc').shadowRoot.querySelector('#siguiente'));
+            let mostrar;
 		let jsonObjects=json;
 		if (primero==true) {
-			let mostrar = jsonObjects.length-8;
-			this.total=jsonObjects.length;
-			this.total=this.total-2;
+                    if(pag>=jsonObjects.length){
+                        mostrar = jsonObjects.length;
+                        this.total=jsonObjects.length;
+			this.filas=jsonObjects.length;
+                    }else{
+                        mostrar = jsonObjects.length-pag;
+                        this.total=jsonObjects.length;
+			this.total=this.total-pag;
 			this.filas=jsonObjects.length-mostrar;
+                    }			
 			
 			
 		}else if(sig==true){
 
-		        this.filas=this.filas+2;	
+		        this.filas=this.filas+pag;	
                         atras.disabled = false;
-			console.log(this.filas + " < " + jsonObjects.length)
 			if (this.filas===jsonObjects.length) {
                             siguiente.disabled = true;
 			}
                         
 		}else if (sig==false) {
-			this.filas=this.filas-2;
+			this.filas=this.filas-pag;
                         siguiente.disabled = false;
-                        if(this.filas === 8){
+                        if(this.filas === pag){
                             atras.disabled = true;
                         }
 		}
