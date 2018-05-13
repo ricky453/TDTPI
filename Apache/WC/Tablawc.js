@@ -72,10 +72,15 @@ class Tablawc extends HTMLElement{
         	
 	        	let hijo=document.querySelector('tabla-wc').shadowRoot.querySelector('#micontainer');
 	        	shadowRoot.removeChild(hijo);
-
+                        let cont;
 	        	promesa.then(data=>{
-	        		alte=alte+num;
-				let cont=this.tabla(data,false,true,alte,num,false);
+	        		alte=alte+num;     
+                                if(alte+num>=data.length){
+                                    alte = data.length-num;
+                                    cont=this.tabla(data,false,true,alte,num,true);
+                                }else{
+                                    cont=this.tabla(data,false,true,alte,num,false);
+                                }
 				shadowRoot.appendChild(cont);
 				})
         
@@ -85,11 +90,18 @@ class Tablawc extends HTMLElement{
         atras.addEventListener('click', e=>{
         	let hijo=document.querySelector('tabla-wc').shadowRoot.querySelector('#micontainer');
         	shadowRoot.removeChild(hijo);
+                let cont;
         	promesa.then(data=>{
         		alte=alte-num;
-			let cont=this.tabla(data,false,false,alte,num,false);
-			
-
+                        if(alte+num<=num){
+                            cont=this.tabla(data,true,false,0,num,false);
+                            primero.disabled = true;
+                            atras.disabled = true;
+                            ultimo.disabled= false;
+                            siguiente.disabled = false;
+                        }else{
+                            cont=this.tabla(data,false,false,alte,num,false);
+                        }			
 			shadowRoot.appendChild(cont);
 		})
         })
@@ -122,8 +134,9 @@ class Tablawc extends HTMLElement{
         ultimo.addEventListener('click', e=>{
         	let hijo=document.querySelector('tabla-wc').shadowRoot.querySelector('#micontainer');
         	shadowRoot.removeChild(hijo);
+                num = parseInt(cmbPaginado.options[cmbPaginado.selectedIndex].value);
         	promesa.then(data=>{
-                        alte = data.length-5;
+                        alte = data.length-num;
 			let cont=this.tabla(data,false,true,alte,num,true);
 			shadowRoot.appendChild(cont);
 		})
@@ -174,12 +187,10 @@ class Tablawc extends HTMLElement{
                         this.total=jsonObjects.length;
 			this.total=this.total-pag;
 			this.filas=jsonObjects.length-mostrar;
-                        
                     }						
 		}
                 else if(final===true){
                     this.filas=jsonObjects.length;
-                    console.log(this.filas);
                     ultimo.disabled=true;
                     siguiente.disabled=true;
                     atras.disabled=false;
@@ -187,10 +198,9 @@ class Tablawc extends HTMLElement{
                 }
                 else if(sig===true){
 		        this.filas=this.filas+pag;    
-                        console.log(this.filas);
                         atras.disabled = false;
                         first.disabled = false;
-			if (this.filas===jsonObjects.length) {
+			if (this.filas>=jsonObjects.length) {
                             siguiente.disabled = true;
                             ultimo.disabled = true;
 			}
