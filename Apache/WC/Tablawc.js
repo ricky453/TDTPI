@@ -10,15 +10,21 @@ class Tablawc extends HTMLElement{
 
 		let shadowRoot=this.attachShadow({mode:'open'});
 		
+                //botones
 		let atras=document.createElement('button');
-		atras.innerText='Atras';
+		atras.innerText='<';
 		atras.setAttribute('id', 'atras');
 		let siguiente=document.createElement('button');
                 siguiente.setAttribute('id', 'siguiente');
-		siguiente.innerText='Siguiente';
-		let ultimo=document.createElement('input');
-		let primero=document.createElement('input');
+		siguiente.innerText='>';
+		let ultimo=document.createElement('button');
+                ultimo.innerText='>>';
+                ultimo.setAttribute('id','ultimo');
+		let primero=document.createElement('button');
+                primero.innerText='<<';
+                primero.setAttribute('id','primero');
                 atras.disabled = true;
+                primero.disabled = true;
                 
                 
                 //lista
@@ -52,10 +58,12 @@ class Tablawc extends HTMLElement{
 		let promesa = this.path(`http://localhost:7070/MantenimientoWeb-web-1.0-SNAPSHOT/webresources/marca`);
 
 		promesa.then(data=>{
-			let cont=this.tabla(data,true,false,0,5);
+			let cont=this.tabla(data,true,false,0,5,false);
+                        shadowRoot.appendChild(primero);
 			shadowRoot.appendChild(atras);
                         shadowRoot.appendChild(cmbPaginado);
 			shadowRoot.appendChild(siguiente);
+                        shadowRoot.appendChild(ultimo);
 			shadowRoot.appendChild(cont);
 
 		})
@@ -67,8 +75,7 @@ class Tablawc extends HTMLElement{
 
 	        	promesa.then(data=>{
 	        		alte=alte+num;
-				let cont=this.tabla(data,false,true,alte,num);
-				
+				let cont=this.tabla(data,false,true,alte,num,false);
 				shadowRoot.appendChild(cont);
 				})
         
@@ -80,7 +87,7 @@ class Tablawc extends HTMLElement{
         	shadowRoot.removeChild(hijo);
         	promesa.then(data=>{
         		alte=alte-num;
-			let cont=this.tabla(data,false,false,alte,num);
+			let cont=this.tabla(data,false,false,alte,num,false);
 			
 
 			shadowRoot.appendChild(cont);
@@ -89,21 +96,56 @@ class Tablawc extends HTMLElement{
         
         cmbPaginado.onchange = () => {
             let hijo=document.querySelector('tabla-wc').shadowRoot.querySelector('#micontainer');
-            console.log(hijo);
              num = parseInt(cmbPaginado.options[cmbPaginado.selectedIndex].value);
+             
              promesa.then(data=>{
+                 if(num > data.length){
+                     siguiente.disabled = true;
+                     ultimo.disabled = true;
+                 }else{
+                     siguiente.disabled = false;
+                     ultimo.disabled = false;
+                 }
+                 primero.disabled = true;
+                 atras.disabled = true;
                  alte=0;
                  //let cont;
                  //shadowRoot.appendChild(cont);
-                 let cont = this.tabla(data,true,false,alte,num);
+                 let cont = this.tabla(data,true,false,alte,num,false);
 
                  //let cont=this.tabla(data,false,false,alte);	
 		shadowRoot.replaceChild(cont, hijo);
-             })
+             })                     
              
-             console.log(num);
             
         }
+        ultimo.addEventListener('click', e=>{
+        	let hijo=document.querySelector('tabla-wc').shadowRoot.querySelector('#micontainer');
+        	shadowRoot.removeChild(hijo);
+        	promesa.then(data=>{
+                        alte = data.length-5;
+			let cont=this.tabla(data,false,true,alte,num,true);
+			shadowRoot.appendChild(cont);
+		})
+        })
+        primero.addEventListener('click', e=>{
+        	let hijo=document.querySelector('tabla-wc').shadowRoot.querySelector('#micontainer');
+                shadowRoot.removeChild(hijo);
+        	promesa.then(data=>{
+                        alte = 0;
+                        primero.disabled = true;
+                        atras.disabled = true;
+                        if(num > data.length){
+                            siguiente.disabled = true;
+                            ultimo.disabled = true;
+                        }else{
+                            siguiente.disabled = false;
+                            ultimo.disabled = false;
+                        }
+			let cont=this.tabla(data,true,false,alte,num,false);
+			shadowRoot.appendChild(cont);
+		})
+        })
 		
 		var clone=document.importNode(templateContent, true);
 		
@@ -114,37 +156,52 @@ class Tablawc extends HTMLElement{
 	}
         
 
-	tabla(json,primero,sig,alterador, pag){
+	tabla(json,primero,sig,alterador,pag,final){
             let siguiente = document.querySelector('tabla-wc').shadowRoot.querySelector('#siguiente');
             let atras = document.querySelector('tabla-wc').shadowRoot.querySelector('#atras');
+            let first = document.querySelector('tabla-wc').shadowRoot.querySelector('#primero');
+            let ultimo = document.querySelector('tabla-wc').shadowRoot.querySelector('#ultimo');
             let mostrar;
 		let jsonObjects=json;
-		if (primero==true) {
+		if (primero===true) {
                     if(pag>=jsonObjects.length){
                         mostrar = jsonObjects.length;
                         this.total=jsonObjects.length;
 			this.filas=jsonObjects.length;
+                        
                     }else{
                         mostrar = jsonObjects.length-pag;
                         this.total=jsonObjects.length;
 			this.total=this.total-pag;
 			this.filas=jsonObjects.length-mostrar;
-                    }			
-			
-			
-		}else if(sig==true){
-
-		        this.filas=this.filas+pag;	
+                        
+                    }						
+		}
+                else if(final===true){
+                    this.filas=jsonObjects.length;
+                    console.log(this.filas);
+                    ultimo.disabled=true;
+                    siguiente.disabled=true;
+                    atras.disabled=false;
+                    first.disabled=false;
+                }
+                else if(sig===true){
+		        this.filas=this.filas+pag;    
+                        console.log(this.filas);
                         atras.disabled = false;
+                        first.disabled = false;
 			if (this.filas===jsonObjects.length) {
                             siguiente.disabled = true;
+                            ultimo.disabled = true;
 			}
                         
-		}else if (sig==false) {
+		}else if (sig===false) {
 			this.filas=this.filas-pag;
                         siguiente.disabled = false;
+                        ultimo.disabled = false;
                         if(this.filas === pag){
                             atras.disabled = true;
+                            first.disabled = true;
                         }
 		}
 

@@ -22,11 +22,25 @@
 	
 	<style>
 	
-		#micontainer{
-			
+		#micontainer{	
 			margin: auto;
 			overflow-x:auto;
+                        height: 440px;
 		}
+                ::-webkit-scrollbar {
+                        width: 10px;
+                }
+                /* Track */
+                ::-webkit-scrollbar-track {
+                    background: #ddd; 
+                }
+                ::-webkit-scrollbar-thumb {
+                    background-color: #1B882D;
+                } 
+                /* Handle on hover */
+                ::-webkit-scrollbar-thumb:hover {
+                    background: #529b5e; 
+                }
 		#tabla{
 			background: #fff;
 			border-collapse: collapse;
@@ -41,6 +55,7 @@
 
 		#tabla tr th{
 			padding: 10px;
+                       
 			/*background: #22648C;*/
 		}
 
@@ -64,6 +79,7 @@
 			background: #1B882D;
 			border-bottom: solid 3.5px #1C431B;
 			color: #FFFFFF;
+
 		}
 
 		tr:nth-child(even){
@@ -72,21 +88,48 @@
 
 		#atras{
 			padding: 15px;
-			margin-left: 40%;
+			margin-left: 37%;
+                        margin-bottom: 1%;
+                        border-radius: 5px;
+                        
 		}
 
-		 #siguiente{
+                #atras:disabled{
+                        background-color: #eee;
+                        color: #aaa;
+                        border-radius: 5px;
+                        border: 0;
+                }
+                
+                #cmbPaginado{
+                     	padding: 10px;
+			margin-left: 5%;
+                        margin-bottom: 1%;
+                        border-radius: 5px;
+                }
+
+		#siguiente{
 			padding: 15px;
-			margin-left: 10%;
-		 }
+			margin-left: 5%;
+                        margin-bottom: 1%;
+                        border-radius: 5px;
+		}
+                 
+                #siguiente:disabled{
+                        background-color: #eee;
+                        color: #aaa;
+                        border-radius: 5px;
+                        border: 0;
+                }
+                 
+
 
 
 	</style>
 
-
 	<table id="tabla">
 		<slot name='dato'>
-			<slot name='datoss'></slot>
+			<slot name='datos'></slot>
 		</slot>
 			
 	</table>
