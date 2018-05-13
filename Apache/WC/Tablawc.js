@@ -102,6 +102,7 @@ class Tablawc extends HTMLElement{
                             ultimo.disabled= false;
                             siguiente.disabled = false;
                         }else{
+
                             cont=this.tabla(data,false,false,alte,num,false);
                         }			
 			shadowRoot.appendChild(cont);
