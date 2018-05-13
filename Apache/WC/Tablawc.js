@@ -12,12 +12,12 @@ class Tablawc extends HTMLElement{
 		let atras=document.createElement('button');
 		atras.innerText='Atras';
 		atras.setAttribute('id', 'atras');
-		let siguiente=document.createElement('button');
+		var siguiente=document.createElement('button');
+                siguiente.setAttribute('id', 'siguiente');
 		siguiente.innerText='Siguiente';
-		siguiente.setAttribute('id', 'siguiente');
 		let ultimo=document.createElement('input');
 		let primero=document.createElement('input');
-
+                atras.disabled = true;
 
 		let total=0;
 		
@@ -75,7 +75,10 @@ class Tablawc extends HTMLElement{
 	}
 
 	tabla(json,primero,sig,alterador){
+            let siguiente = document.querySelector('tabla-wc').shadowRoot.querySelector('#siguiente');
+            let atras = document.querySelector('tabla-wc').shadowRoot.querySelector('#atras');
 
+                //console.log(document.querySelector('tabla-wc').shadowRoot.querySelector('#siguiente'));
 		let jsonObjects=json;
 		if (primero==true) {
 			let mostrar = jsonObjects.length-8;
@@ -85,37 +88,20 @@ class Tablawc extends HTMLElement{
 			
 			
 		}else if(sig==true){
-			
-				this.filas=this.filas+2;
-			
-			
-			if (this.filas>jsonObjects.length) {
-				let diferencia=this.filas-jsonObjects.length;
-				console.log(diferencia);
-				if (diferencia==1) {
-					this.filas=this.filas-1;
-					this.tope=false;
-					console.log(this.tope);
-					
-				}else{
-				
-				}
-				
+
+		        this.filas=this.filas+2;	
+                        atras.disabled = false;
+			console.log(this.filas + " < " + jsonObjects.length)
+			if (this.filas===jsonObjects.length) {
+                            siguiente.disabled = true;
 			}
+                        
 		}else if (sig==false) {
 			this.filas=this.filas-2;
-			if (this.filas>jsonObjects.length) {
-				let diferencia=jsonObjects.length-this.filas;
-				if (diferencia==1) {
-					this.filas=this.filas+1;
-					
-				}else{
-					this.filas=this.filas+2;
-				}
-				
-			}else{
-				
-			}
+                        siguiente.disabled = false;
+                        if(this.filas === 8){
+                            atras.disabled = true;
+                        }
 		}
 
 
@@ -126,22 +112,38 @@ class Tablawc extends HTMLElement{
 		tabla.setAttribute('id', 'tabla');
 		
 		let contador=0;
+                let count=0;
                 let header = [];
                 let saltar;
+                let primerizo = [];
         	let tr=document.createElement('tr');
                 for(let cabecera in jsonObjects[contador]){ 
                             if(header.indexOf(cabecera)===-1){
                             header.push(cabecera);
                             if(cabecera.indexOf("detalle")>-1){//para buscar cabeceras que tengan detalle
                                 saltar=cabecera;
-
-                            }                                                                
+                            }                   
+                            if(cabecera.indexOf("id")>-1){
+                                primerizo[count] = cabecera;
+                                count++;
+                            }
                         } 
                 }   
                 let borrar=header.indexOf(saltar); 
                 header.splice(borrar, 1); //se elimina la cabecera detalle
+                        var count2=0;
+                        for(var i=0;i<header.length;i++){//ordenar tabla, id primero
+                            for(var j=0; j < primerizo.length;j++){
+                                if(header[i] === primerizo[j]){
+                                    var trade = header[count2]; //primera posicion del arreglo
+                                    header[count2] = primerizo [j]; //pasando el id al principio
+                                    primerizo[j] = trade;
+                                    header[i] = trade;
+                                    count2++;
+                                }
+                            }
+                        }
 			for (let key in header) {
-                            console.log(header);
                             
 				   let th=document.createElement('th');
 				   th.innerText=header[key];
