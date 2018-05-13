@@ -69,12 +69,12 @@ class Tablawc extends HTMLElement{
 		})
 
         siguiente.addEventListener('click', e=>{
-        	
+        	        
 	        	let hijo=document.querySelector('tabla-wc').shadowRoot.querySelector('#micontainer');
 	        	shadowRoot.removeChild(hijo);
                         let cont;
 	        	promesa.then(data=>{
-	        		alte=alte+num;     
+	        		alte=alte+num;   
                                 if(alte+num>=data.length){
                                     alte = data.length-num;
                                     cont=this.tabla(data,false,true,alte,num,true);
@@ -92,9 +92,11 @@ class Tablawc extends HTMLElement{
         	shadowRoot.removeChild(hijo);
                 let cont;
         	promesa.then(data=>{
+                        
         		alte=alte-num;
                         if(alte+num<=num){
-                            cont=this.tabla(data,true,false,0,num,false);
+                            alte=0;
+                            cont=this.tabla(data,true,false,alte,num,false);
                             primero.disabled = true;
                             atras.disabled = true;
                             ultimo.disabled= false;
