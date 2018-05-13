@@ -91,7 +91,13 @@ class Tablawc extends HTMLElement{
             let hijo=document.querySelector('tabla-wc').shadowRoot.querySelector('#micontainer');
             console.log(hijo);
              num = parseInt(cmbPaginado.options[cmbPaginado.selectedIndex].value);
+             
              promesa.then(data=>{
+                 if(num > data.length){
+                     siguiente.disabled = true;
+                 }else{
+                     siguiente.disabled = false;
+                 }
                  alte=0;
                  //let cont;
                  //shadowRoot.appendChild(cont);
@@ -124,11 +130,13 @@ class Tablawc extends HTMLElement{
                         mostrar = jsonObjects.length;
                         this.total=jsonObjects.length;
 			this.filas=jsonObjects.length;
+                        
                     }else{
                         mostrar = jsonObjects.length-pag;
                         this.total=jsonObjects.length;
 			this.total=this.total-pag;
 			this.filas=jsonObjects.length-mostrar;
+                        
                     }			
 			
 			
