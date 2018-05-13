@@ -3,6 +3,7 @@ class Tablawc extends HTMLElement{
 
 	constructor(){
 		super();
+                                
 	}
 
 	connectedCallback(){
@@ -12,12 +13,30 @@ class Tablawc extends HTMLElement{
 		let atras=document.createElement('button');
 		atras.innerText='Atras';
 		atras.setAttribute('id', 'atras');
-		var siguiente=document.createElement('button');
+		let siguiente=document.createElement('button');
                 siguiente.setAttribute('id', 'siguiente');
 		siguiente.innerText='Siguiente';
 		let ultimo=document.createElement('input');
 		let primero=document.createElement('input');
                 atras.disabled = true;
+                
+                
+                //lista
+                let num = 5;
+                let tamanios = ["5", "10", "25", "50", "100"];
+                let cmbPaginado = document.createElement('select');
+                cmbPaginado.setAttribute('id','cmbPaginado');
+                //let divi = tamanios.split(",");
+                num = parseInt(tamanios);
+                tamanios.forEach((value) => {
+                    let opcion = document.createElement('option');
+                    opcion.innerText = value;
+                    opcion.setAttribute("value", value);
+                    cmbPaginado.appendChild(opcion);
+                });
+                
+                
+
 
 		let total=0;
 		
@@ -35,8 +54,10 @@ class Tablawc extends HTMLElement{
 		promesa.then(data=>{
 			let cont=this.tabla(data,true,false,0);
 			shadowRoot.appendChild(atras);
+                        shadowRoot.appendChild(cmbPaginado);
 			shadowRoot.appendChild(siguiente);
 			shadowRoot.appendChild(cont);
+
 		})
 
         siguiente.addEventListener('click', e=>{
@@ -65,6 +86,13 @@ class Tablawc extends HTMLElement{
 			shadowRoot.appendChild(cont);
 		})
         })
+        
+        cmbPaginado.onchange = () => {
+             num = parseInt(cmbPaginado.options[cmbPaginado.selectedIndex].value);
+             
+             console.log(num);
+            
+        }
 		
 		var clone=document.importNode(templateContent, true);
 		
@@ -73,8 +101,11 @@ class Tablawc extends HTMLElement{
 		shadowRoot.appendChild(clone);
 		
 	}
+        
 
 	tabla(json,primero,sig,alterador){
+            let cmbPaginado = document.querySelector('tabla-wc').shadowRoot.querySelector('#cmbPaginado');
+            let num = 5;
             let siguiente = document.querySelector('tabla-wc').shadowRoot.querySelector('#siguiente');
             let atras = document.querySelector('tabla-wc').shadowRoot.querySelector('#atras');
 
