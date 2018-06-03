@@ -75,7 +75,7 @@ class Navegadorwc extends HTMLElement{
             }
             atras.disabled = false;
             primero.disabled = false;
-            console.log("pagina "+this._pagina + " de "+paginas);
+            //console.log("pagina "+this._pagina + " de "+paginas);
         	        
         });
 
@@ -96,7 +96,7 @@ class Navegadorwc extends HTMLElement{
             }
             siguiente.disabled = false;
             ultimo.disabled = false;
-            console.log("pagina "+this._pagina + " de "+paginas);
+            //console.log("pagina "+this._pagina + " de "+paginas);
             
         });
         
@@ -109,8 +109,11 @@ class Navegadorwc extends HTMLElement{
                 siguiente.disabled = false;
                 ultimo.disabled = false;
             }
+            primero.disabled = true;
+            atras.disabled=true;
             this._low = 0;
             this._high = num;
+            this._pagina = 1;
 
         };
         ultimo.addEventListener('click', e=>{
@@ -129,7 +132,7 @@ class Navegadorwc extends HTMLElement{
 
             siguiente.disabled = true;
             ultimo.disabled = true;
-            console.log("pagina "+this._pagina + " de "+paginas);
+            //console.log("pagina "+this._pagina + " de "+paginas);
 
         });
         primero.addEventListener('click', e=>{
@@ -146,7 +149,7 @@ class Navegadorwc extends HTMLElement{
             primero.disabled = true;
             siguiente.disabled = false;
             ultimo.disabled = false;
-            console.log("pagina "+this._pagina + " de "+paginas);
+            //console.log("pagina "+this._pagina + " de "+paginas);
         });
 		var clone=document.importNode(templateContent, true);
 		this._shadowRoot.appendChild(clone);
