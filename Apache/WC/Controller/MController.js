@@ -3,8 +3,8 @@ import MarcaResourceClient from './MarcaResourceClient.js';
 
 var tabla = document.querySelector("tabla-wc");
 var navegador = document.querySelector("navegador-wc");
-var guardar = document.querySelector("boton-wc");
-//let paginado = tabla._shadowRoot.querySelector('#tabla');
+let paginado = navegador._shadowRoot.querySelector('#cmbPaginado');
+
 let mrc = new MarcaResourceClient();
 
 
@@ -35,20 +35,8 @@ window.onload = function () {
                 navegador.definirTabla();
 
             });
-    };
+    };    
     
-    guardar.onclick = () =>  {
-        var pepe = {
-            "idMarca": '1',
-            "marca": 'marca',
-            "descripcion": 'DES',
-            "activo": false
-        };
-        mrc.edit(pepe);  
-    };
-
-    
- 
 export default this;    
 	
         

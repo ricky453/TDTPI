@@ -21,7 +21,7 @@ class Tablawc extends HTMLElement{
         }
         
         modificarTabla(data){
-            let hijo=this._shadowRoot.querySelector('#micontainer');
+                let hijo=this._shadowRoot.querySelector('#micontainer');
             let none = this.tabla(data);
             this._shadowRoot.replaceChild(none, hijo);
         }
@@ -102,11 +102,6 @@ class Tablawc extends HTMLElement{
             return contenedor;  
 
 	}
-        getDatos(){
-            var datos=document.getElementsByTagName("#micontainer");
-            console.log(datos);
-        }
-
 
 }
 

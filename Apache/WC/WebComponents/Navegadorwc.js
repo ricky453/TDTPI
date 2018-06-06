@@ -99,9 +99,13 @@ class Navegadorwc extends HTMLElement{
             //console.log("pagina "+this._pagina + " de "+paginas);
             
         });
-        
+
         cmbPaginado.onchange = () => {
+            
+            primero.disabled = true;
+            atras.disabled = true;
             num = parseInt(cmbPaginado.options[cmbPaginado.selectedIndex].value); 
+                        console.log(num);
             if(this._count<=num){
                 siguiente.disabled = true;
                 ultimo.disabled = true;
@@ -109,8 +113,6 @@ class Navegadorwc extends HTMLElement{
                 siguiente.disabled = false;
                 ultimo.disabled = false;
             }
-            primero.disabled = true;
-            atras.disabled=true;
             this._low = 0;
             this._high = num;
             this._pagina = 1;
