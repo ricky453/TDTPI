@@ -1,3 +1,5 @@
+/* global Httpreq */
+
 import AbstractResourceClient from './AbstractResourceClient.js';
 
 class MarcaResourceClient extends AbstractResourceClient{
@@ -7,8 +9,8 @@ class MarcaResourceClient extends AbstractResourceClient{
 		this.url=this.url+'/marca';
 	}
 
-	findByName () {
-		return fetch(this.url+'/nombre');
+	findByName(){
+            return fetch(this.url+'/nombre');
 	}       
         findAll(){
             return fetch(this.url);
@@ -20,9 +22,13 @@ class MarcaResourceClient extends AbstractResourceClient{
         findRange(low, high){
             return fetch(this.url+'/findRange?lower='+low+'&higher='+high);
         }
-        
-        
-        
+        edit(data){
+          let Httpreq = new XMLHttpRequest();
+          Httpreq.open('PUT', this.url+'/editar', true);
+          Httpreq.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+          Httpreq.send(JSON.stringify(data));
+          console.log(data);
+      }
 }
 
 export default MarcaResourceClient;

@@ -25,7 +25,7 @@
 		#micontainer{	
 			margin: auto;
 			overflow-x:auto;
-                        height: 440px;
+                        height: 350px;
 		}
                 ::-webkit-scrollbar {
                         width: 10px;
@@ -44,7 +44,7 @@
 		#tabla{
 			background: #fff;
 			border-collapse: collapse;
-			font-size: 1.5em;
+			font-size: 1.25em;
 			margin:auto;
 			min-width: 1000px;
 		}
@@ -148,6 +148,12 @@
                         border-radius: 5px;
                         border: 0;
                 }
+                #guardar{
+			padding: 15px;
+                        margin-left: 77%;
+                        border-radius: 5px;
+                        margin-top: 1%;
+		}
                  
 
 
@@ -162,12 +168,15 @@
 	</table>
     </template>
         	<h1 id="titulo"> Mostrando elementos de Marca</h1>
-    <navegador-wc></navegador-wc><tabla-wc></tabla-wc>
+<navegador-wc></navegador-wc><tabla-wc></tabla-wc><boton-wc></boton-wc>
         <script type="module">
             import Navegadorwc from './WebComponents/Navegadorwc.js';
         </script> 
 	<script type="module">
             import Tablawc from './WebComponents/Tablawc.js';
+        </script> 
+        <script type="module">
+            import Botonwc from './WebComponents/Botonwc.js';
         </script> 
         
 	<script type="module" src="./Controller/MController.js"></script>

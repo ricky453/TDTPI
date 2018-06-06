@@ -58,8 +58,7 @@ class Tablawc extends HTMLElement{
                             }
                         } 
                     }   
-
-                        var count2=0;
+                    var count2=0;
                         for(var i=0;i<header.length;i++){//ordenar tabla, id primero
                             for(var j=0; j < primerizo.length;j++){
                                 if(header[i] === primerizo[j]){
@@ -84,6 +83,7 @@ class Tablawc extends HTMLElement{
         	for(var fila=0; fila<this.filas;fila++){
                     let filas=document.createElement('tr'); 
 	            filas.setAttribute('slot', 'dato');
+                    filas.setAttribute('id', 'islot');
                     for(var columna=0;columna<header.length;columna++){
 
 
@@ -102,6 +102,11 @@ class Tablawc extends HTMLElement{
             return contenedor;  
 
 	}
+        getDatos(){
+            var datos=document.getElementsByTagName("#micontainer");
+            console.log(datos);
+        }
+
 
 }
 

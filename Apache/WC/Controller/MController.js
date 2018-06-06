@@ -1,6 +1,10 @@
 import MarcaResourceClient from './MarcaResourceClient.js';
 
+
+var tabla = document.querySelector("tabla-wc");
 var navegador = document.querySelector("navegador-wc");
+var guardar = document.querySelector("boton-wc");
+//let paginado = tabla._shadowRoot.querySelector('#tabla');
 let mrc = new MarcaResourceClient();
 
 
@@ -16,26 +20,11 @@ window.onload = function () {
         return response.json();
     })
         .then((data) => {
-            var tabla = document.querySelector("tabla-wc");
             tabla.definirTabla(data);
             navegador.setTabla(data);
 
         });
     };
-
-    let paginado = navegador._shadowRoot.querySelector('#cmbPaginado');
-    
-//    paginado.onchange = () =>  {
-//    let num = paginado.options[paginado.selectedIndex].value;
-//    mrc.findRange(0, num).then((response) => {
-//        return response.json();
-//    })
-//        .then((data) => {
-//            navegador.setTabla(data);
-//            navegador.definirTabla(true, false, 0, num, false);
-//
-//        });
-//    };
     
     navegador.onclick = () =>  {
         mrc.findRange(navegador.getLower(), navegador.getHigher()).then((response) => {
@@ -47,6 +36,17 @@ window.onload = function () {
 
             });
     };
+    
+    guardar.onclick = () =>  {
+        var pepe = {
+            "idMarca": '1',
+            "marca": 'marca',
+            "descripcion": 'DES',
+            "activo": false
+        };
+        mrc.edit(pepe);  
+    };
+
     
  
 export default this;    
