@@ -46,6 +46,28 @@ CREATE TABLE public.asuetos (
 
 ALTER TABLE public.asuetos OWNER TO postgres;
 
+
+--
+-- Name: asuetos_id_asueto_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.asuetos_id_asueto_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.asuetos_id_asueto_seq OWNER TO postgres;
+
+--
+-- Name: asuetos_id_asueto_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.asuetos_id_asueto_seq OWNED BY public.asuetos.id_asueto;
+
+
 --
 -- Name: calendario; Type: TABLE; Schema: public; Owner: postgres
 --
@@ -65,6 +87,26 @@ CREATE TABLE public.calendario (
 ALTER TABLE public.calendario OWNER TO postgres;
 
 --
+-- Name: calendario_id_calendario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.calendario_id_calendario_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.calendario_id_calendario_seq OWNER TO postgres;
+
+--
+-- Name: calendario_id_calendario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.calendario_id_calendario_seq OWNED BY public.calendario.id_calendario;
+
+--
 -- Name: cargo; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -77,6 +119,27 @@ CREATE TABLE public.cargo (
 
 
 ALTER TABLE public.cargo OWNER TO postgres;
+
+--
+-- Name: cargo_id_cargo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.cargo_id_cargo_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.cargo_id_cargo_seq OWNER TO postgres;
+
+--
+-- Name: cargo_id_cargo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.cargo_id_cargo_seq OWNED BY public.cargo.id_cargo;
+
 
 --
 -- Name: detalle_equipo; Type: TABLE; Schema: public; Owner: postgres
@@ -95,6 +158,27 @@ CREATE TABLE public.detalle_equipo (
 ALTER TABLE public.detalle_equipo OWNER TO postgres;
 
 --
+-- Name: detalle_equipo_id_detalle_equipo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.detalle_equipo_id_detalle_equipo_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.detalle_equipo_id_detalle_equipo_seq OWNER TO postgres;
+
+--
+-- Name: detalle_equipo_id_detalle_equipo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.detalle_equipo_id_detalle_equipo_seq OWNED BY public.detalle_equipo.id_detalle_equipo;
+
+
+--
 -- Name: detalle_mantenimiento; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -108,6 +192,27 @@ CREATE TABLE public.detalle_mantenimiento (
 
 
 ALTER TABLE public.detalle_mantenimiento OWNER TO postgres;
+
+--
+-- Name: detalle_mantenimiento_id_detalle_mantenimiento_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.detalle_mantenimiento_id_detalle_mantenimiento_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.detalle_mantenimiento_id_detalle_mantenimiento_seq OWNER TO postgres;
+
+--
+-- Name: detalle_mantenimiento_id_detalle_mantenimiento_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.detalle_mantenimiento_id_detalle_mantenimiento_seq OWNED BY public.detalle_mantenimiento.id_detalle_mantenimiento;
+
 
 --
 -- Name: diagnostico; Type: TABLE; Schema: public; Owner: postgres
@@ -124,6 +229,26 @@ CREATE TABLE public.diagnostico (
 ALTER TABLE public.diagnostico OWNER TO postgres;
 
 --
+-- Name: diagnostico_id_diagnostico_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.diagnostico_id_diagnostico_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.diagnostico_id_diagnostico_seq OWNER TO postgres;
+
+--
+-- Name: diagnostico_id_diagnostico_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.diagnostico_id_diagnostico_seq OWNED BY public.diagnostico.id_diagnostico;
+
+--
 -- Name: diagnostico_parte; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -137,6 +262,27 @@ CREATE TABLE public.diagnostico_parte (
 ALTER TABLE public.diagnostico_parte OWNER TO postgres;
 
 --
+-- Name: diagnostico_parte_id_diagnostico_parte_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.diagnostico_parte_id_diagnostico_parte_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.diagnostico_parte_id_diagnostico_parte_seq OWNER TO postgres;
+
+--
+-- Name: diagnostico_parte_id_diagnostico_parte_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.diagnostico_parte_id_diagnostico_parte_seq OWNED BY public.diagnostico_parte.id_diagnostico_parte;
+
+
+--
 -- Name: equipo; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -148,6 +294,26 @@ CREATE TABLE public.equipo (
 
 
 ALTER TABLE public.equipo OWNER TO postgres;
+
+--
+-- Name: equipo_id_equipo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.equipo_id_equipo_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.equipo_id_equipo_seq OWNER TO postgres;
+
+--
+-- Name: equipo_id_equipo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.equipo_id_equipo_seq OWNED BY public.equipo.id_equipo;
 
 --
 -- Name: estado_detalle_mantenimiento; Type: TABLE; Schema: public; Owner: postgres
@@ -165,6 +331,27 @@ CREATE TABLE public.estado_detalle_mantenimiento (
 ALTER TABLE public.estado_detalle_mantenimiento OWNER TO postgres;
 
 --
+-- Name: estado_detalle_mantenimiento_id_estado_detalle_mantenimiento_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.estado_detalle_mantenimiento_id_estado_detalle_mantenimiento_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.estado_detalle_mantenimiento_id_estado_detalle_mantenimiento_seq OWNER TO postgres;
+
+--
+-- Name: estado_detalle_mantenimiento_id_estado_detalle_mantenimiento_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.estado_detalle_mantenimiento_id_estado_detalle_mantenimiento_seq OWNED BY public.estado_detalle_mantenimiento.id_estado_detalle_mantenimiento;
+
+
+--
 -- Name: marca; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -172,11 +359,32 @@ CREATE TABLE public.marca (
     id_marca integer NOT NULL,
     marca text,
     descripcion text,
-    activo boolean
+    activo boolean DEFAULT true NOT NULL
 );
 
 
 ALTER TABLE public.marca OWNER TO postgres;
+
+--
+-- Name: marca_id_marca_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.marca_id_marca_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.marca_id_marca_seq OWNER TO postgres;
+
+--
+-- Name: marca_id_marca_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.marca_id_marca_seq OWNED BY public.marca.id_marca;
+
 
 --
 -- Name: modelo; Type: TABLE; Schema: public; Owner: postgres
@@ -192,6 +400,27 @@ CREATE TABLE public.modelo (
 ALTER TABLE public.modelo OWNER TO postgres;
 
 --
+-- Name: modelo_id_modelo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.modelo_id_modelo_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.modelo_id_modelo_seq OWNER TO postgres;
+
+--
+-- Name: modelo_id_modelo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.modelo_id_modelo_seq OWNED BY public.modelo.id_modelo;
+
+
+--
 -- Name: orden_trabajo; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -205,6 +434,27 @@ CREATE TABLE public.orden_trabajo (
 
 
 ALTER TABLE public.orden_trabajo OWNER TO postgres;
+
+--
+-- Name: orden_trabajo_id_orden_trabajo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.orden_trabajo_id_orden_trabajo_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.orden_trabajo_id_orden_trabajo_seq OWNER TO postgres;
+
+--
+-- Name: orden_trabajo_id_orden_trabajo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.orden_trabajo_id_orden_trabajo_seq OWNED BY public.orden_trabajo.id_orden_trabajo;
+
 
 --
 -- Name: orden_trabajo_por_trabajadores; Type: TABLE; Schema: public; Owner: postgres
@@ -232,6 +482,27 @@ CREATE TABLE public.pasos (
 ALTER TABLE public.pasos OWNER TO postgres;
 
 --
+-- Name: pasos_id_paso_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.pasos_id_paso_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.pasos_id_paso_seq OWNER TO postgres;
+
+--
+-- Name: pasos_id_paso_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.pasos_id_paso_seq OWNED BY public.pasos.id_paso;
+
+
+--
 -- Name: procedimiento; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -243,6 +514,26 @@ CREATE TABLE public.procedimiento (
 
 
 ALTER TABLE public.procedimiento OWNER TO postgres;
+
+--
+-- Name: procedimiento_id_procedimiento_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.procedimiento_id_procedimiento_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.procedimiento_id_procedimiento_seq OWNER TO postgres;
+
+--
+-- Name: procedimiento_id_procedimiento_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.procedimiento_id_procedimiento_seq OWNED BY public.procedimiento.id_procedimiento;
 
 --
 -- Name: solicitud; Type: TABLE; Schema: public; Owner: postgres
@@ -263,6 +554,27 @@ CREATE TABLE public.solicitud (
 ALTER TABLE public.solicitud OWNER TO postgres;
 
 --
+-- Name: solicitud_id_solicitud_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.solicitud_id_solicitud_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.solicitud_id_solicitud_seq OWNER TO postgres;
+
+--
+-- Name: solicitud_id_solicitud_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.solicitud_id_solicitud_seq OWNED BY public.solicitud.id_solicitud;
+
+
+--
 -- Name: tipo_mantenimiento; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -274,6 +586,26 @@ CREATE TABLE public.tipo_mantenimiento (
 
 
 ALTER TABLE public.tipo_mantenimiento OWNER TO postgres;
+
+--
+-- Name: tipo_mantenimiento_id_tipo_mantenimiento_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tipo_mantenimiento_id_tipo_mantenimiento_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tipo_mantenimiento_id_tipo_mantenimiento_seq OWNER TO postgres;
+
+--
+-- Name: tipo_mantenimiento_id_tipo_mantenimiento_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tipo_mantenimiento_id_tipo_mantenimiento_seq OWNED BY public.tipo_mantenimiento.id_tipo_mantenimiento;
 
 --
 -- Name: trabajadores; Type: TABLE; Schema: public; Owner: postgres
@@ -288,6 +620,129 @@ CREATE TABLE public.trabajadores (
 
 
 ALTER TABLE public.trabajadores OWNER TO postgres;
+
+--
+-- Name: trabajadores_id_trabajador_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.trabajadores_id_trabajador_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.trabajadores_id_trabajador_seq OWNER TO postgres;
+
+--
+-- Name: trabajadores_id_trabajador_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.trabajadores_id_trabajador_seq OWNED BY public.trabajadores.id_trabajador;
+
+
+--
+-- Name: marca id_marca; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.marca ALTER COLUMN id_marca SET DEFAULT nextval('public.marca_id_marca_seq'::regclass);
+
+--
+-- Name: asuetos id_asueto; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.asuetos ALTER COLUMN id_asueto SET DEFAULT nextval('public.asuetos_id_asueto_seq'::regclass);
+
+--
+-- Name: calendario id_calendario; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.calendario ALTER COLUMN id_calendario SET DEFAULT nextval('public.calendario_id_calendario_seq'::regclass);
+
+--
+-- Name: cargo id_cargo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cargo ALTER COLUMN id_cargo SET DEFAULT nextval('public.cargo_id_cargo_seq'::regclass);
+
+--
+-- Name: detalle_equipo id_detalle_equipo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.detalle_equipo ALTER COLUMN id_detalle_equipo SET DEFAULT nextval('public.detalle_equipo_id_detalle_equipo_seq'::regclass);
+
+--
+-- Name: detalle_mantenimiento id_detalle_mantenimiento; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.detalle_mantenimiento ALTER COLUMN id_detalle_mantenimiento SET DEFAULT nextval('public.detalle_mantenimiento_id_detalle_mantenimiento_seq'::regclass);
+
+--
+-- Name: diagnostico id_diagnostico; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.diagnostico ALTER COLUMN id_diagnostico SET DEFAULT nextval('public.diagnostico_id_diagnostico_seq'::regclass);
+
+--
+-- Name: diagnostico_parte id_diagnostico_parte; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.diagnostico_parte ALTER COLUMN id_diagnostico_parte SET DEFAULT nextval('public.diagnostico_parte_id_diagnostico_parte_seq'::regclass);
+
+--
+-- Name: equipo id_equipo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.equipo ALTER COLUMN id_equipo SET DEFAULT nextval('public.equipo_id_equipo_seq'::regclass);
+
+--
+-- Name: estado_detalle_mantenimiento id_estado_detalle_mantenimiento; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.estado_detalle_mantenimiento ALTER COLUMN id_estado_detalle_mantenimiento SET DEFAULT nextval('public.estado_detalle_mantenimiento_id_estado_detalle_mantenimiento_seq'::regclass);
+
+--
+-- Name: modelo id_modelo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.modelo ALTER COLUMN id_modelo SET DEFAULT nextval('public.modelo_id_modelo_seq'::regclass);
+
+--
+-- Name: orden_trabajo id_orden_trabajo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.orden_trabajo ALTER COLUMN id_orden_trabajo SET DEFAULT nextval('public.orden_trabajo_id_orden_trabajo_seq'::regclass);
+
+--
+-- Name: pasos id_paso; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pasos ALTER COLUMN id_paso SET DEFAULT nextval('public.pasos_id_paso_seq'::regclass);
+
+--
+-- Name: procedimiento id_procedimiento; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.procedimiento ALTER COLUMN id_procedimiento SET DEFAULT nextval('public.procedimiento_id_procedimiento_seq'::regclass);
+
+--
+-- Name: solicitud id_solicitud; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.solicitud ALTER COLUMN id_solicitud SET DEFAULT nextval('public.solicitud_id_solicitud_seq'::regclass);
+
+--
+-- Name: tipo_mantenimiento id_tipo_mantenimiento; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tipo_mantenimiento ALTER COLUMN id_tipo_mantenimiento SET DEFAULT nextval('public.tipo_mantenimiento_id_tipo_mantenimiento_seq'::regclass);
+
+--
+-- Name: trabajadores id_trabajador; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.trabajadores ALTER COLUMN id_trabajador SET DEFAULT nextval('public.trabajadores_id_trabajador_seq'::regclass);
 
 --
 -- Data for Name: asuetos; Type: TABLE DATA; Schema: public; Owner: postgres
@@ -387,6 +842,13 @@ COPY public.marca (id_marca, marca, descripcion, activo) FROM stdin;
 19	FUJITSU	DESCRIPCION	true
 20	SIMPLETECH	DESCRIPCION	true
 \.
+
+--
+-- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.marca_id_marca_seq', 20, true);
+
 
 
 --
