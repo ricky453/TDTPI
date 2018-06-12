@@ -1,10 +1,10 @@
-import AbstractResourceClient from './AbstractResourceClient.js';
+import AbstractResourceClient from '../Abstract/AbstractResourceClient.js';
 
-class MarcaResourceClient extends AbstractResourceClient{
+class TrabajadoresResourceClient extends AbstractResourceClient{
 
 	constructor(){
 		super();
-		this.url=this.url+'/marca';
+		this.url=this.url+'/trabajadores';
 	}
 
 	findByName () {
@@ -25,4 +25,4 @@ class MarcaResourceClient extends AbstractResourceClient{
         
 }
 
-export default MarcaResourceClient;
+export default TrabajadoresResourceClient;

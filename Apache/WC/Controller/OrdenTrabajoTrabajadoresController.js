@@ -1,7 +1,7 @@
-import MarcaResourceClient from './MarcaResourceClient.js';
+import OrdenTrabajoTrabajadoresResourceClient from '../Resources/OrdenTrabajoTrabajadoresResourceClient.js';
 
 var navegador = document.querySelector("navegador-wc");
-let mrc = new MarcaResourceClient();
+let mrc = new OrdenTrabajoTrabajadoresResourceClient();
 
 
 window.onload = function () {
@@ -49,9 +49,4 @@ window.onload = function () {
     };
     
  
-export default this;    
-	
-        
-	
-
-
+export default this;
