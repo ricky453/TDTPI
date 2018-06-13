@@ -1,4 +1,4 @@
-import PasosResourceClient from '../Resources/PasosResourceClients.js';
+import PasosResourceClient from '../Resources/PasosResourceClient.js';
 
 var navegador = document.querySelector("navegador-wc");
 let mrc = new PasosResourceClient();

@@ -4,7 +4,7 @@ class DiagnosticoParteResourceClient extends AbstractResourceClient{
 
 	constructor(){
 		super();
-		this.url=this.url+'/diagnosticoParte';
+		this.url=this.url+'/diagnosticoparte';
 	}
 
 	findByName () {

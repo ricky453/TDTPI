@@ -4,7 +4,7 @@ class TipoMantenimientoResourceClient extends AbstractResourceClient{
 
 	constructor(){
 		super();
-		this.url=this.url+'/tipoDetalleMantenimiento';
+		this.url=this.url+'/tipoMantenimiento';
 	}
 
 	findByName () {

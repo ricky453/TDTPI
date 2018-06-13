@@ -6,71 +6,96 @@
 	
 </head>
 <body>
-	<style>
 
-		body{
-			background-color: lightyellow;
-		}
+<style>
+body{
+background-color: lightyellow;
+}
 
-		#titulo{
-			margin-left: 34%;
-		}
+#titulo{
+margin-left: 34%;
+}	
+</style>
 
-	</style>
-	<style>
-		ul {
-		    list-style-type: none;
-		    margin: 0;
+<template id="menu">
+	
+		<style>
+	
+		/*Estilo general del menu*/
+		#minav ul{
+		    list-style: none;
 		    padding: 0;
-		    overflow: hidden;
-		    background-color: #333;
 		}
-		
-		li {
-		    float: left;
-		    border-right:1px solid #bbb;
+	
+		#minav li{
+		    line-height: 3rem;
+		    position: relative;
 		}
-		
-		li:last-child {
-		    border-right: none;
+	
+		.menu ul{
+		    position: absolute;
 		}
-		
-		li a {
+	
+		#minav a{
+		    color: #ddd;
 		    display: block;
-		    color: white;
-		    text-align: center;
-		    padding: 14px 16px;
+		    padding: 0 4.46em;
 		    text-decoration: none;
+		    transition: .4s;
 		}
-		
-		li a:hover:not(.active) {
-		    background-color: #111;
+	
+		#minav a:hover{
+		    color: #000;
+		    background: rgb(243, 235, 235);
 		}
-		
-		.active {
-		    background-color: #4CAF50;
+	
+		#minav li ul{
+		    display: none;
+		}
+	
+		#minav li:hover > ul{
+		    display: block;
+		}
+	
+		/*Primer nivel del menu*/
+		.menu{
+		    background: #333;
+		    display: table;
+			width: 100%;
+		}
+	
+		.menu > li{
+		    float: left;
+		}
+	
+		/*Segundo nivel del menu*/
+		#minav li li{
+		    background: #222;
+		    width: 210px;
+		    overflow: hidden;
+		    transition: all .5s;
+		}
+	
+		#minav li:hover > ul > li{
+		    max-height: 1000px;
+		    overflow: visible;
+		}
+	
+		.menu > li > ul{
+		    top: 100%;
+		}
+	
+		/*Tercer nivel del menu*/
+		.menu ul ul{
+		    left: 100%;
+		    top: 0;
 		}
 		</style>
-	<ul>
-		<li><a class="active" href="./asuetos.html">Asuetos</a></li>
-		<li><a href="./calendario.html">Calendario</a></li>
-		<li><a href="./cargo.html">Cargo</a></li>
-		<li><a href="./detalleEquipo.html">Detalle Equipo</a></li>
-		<li><a href="./detalleMantenimiento.html">Detalle Mantenimiento</a></li>
-		<li><a href="./diagnostico.html">Diagnosticos</a></li>
-		<li><a href="./diagnosticoParte.html">Diagnostico Parte</a></li>
-		<li><a href="./equipo.html">Equipo</a></li>
-		<li><a href="./estadoDetalleMantenimiento.html">Estado Detalle Mantenimiento</a></li>
-		<li><a href="./index.html">Marcas</a></li>
-		<li><a href="./modelo.html">Modelos</a></li>
-		<li><a href="./ordenTrabajo.html">Orden de Trabajo</a></li>
-		<li><a href="./ordenTrabajoPorTrabajadores.html">Orden de Trabajo por Trabajadores</a></li>
-		<li><a href="./pasos.html">Pasos</a></li>
-		<li><a href="./procedimiento.html">Procedimientos</a></li>
-		<li><a href="/solicitud.html">Solicitudes</a></li>
-		<li><a href="tipoMantenimiento.html">Tipo Mantenimiento</a></li>
-		<li><a href="./trabajadores.html">Trabajadores</a></li>
-      </ul>
+		
+	</template>
+
+<menu-wc></menu-wc>	
+
 <template id="tablas">
 	
 	<style>
@@ -221,7 +246,10 @@
         </script> 
 	<script type="module">
             import Tablawc from './WebComponents/Tablawc.js';
-        </script> 
+	</script>
+	<script type="module">
+		import Menuwc from './WebComponents/menu.js';
+	</script>
         
 	<script type="module" src="./Controller/AsuetoController.js"></script>
 	

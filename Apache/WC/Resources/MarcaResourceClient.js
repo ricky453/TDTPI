@@ -9,20 +9,7 @@ class MarcaResourceClient extends AbstractResourceClient{
 
 	findByName () {
 		return fetch(this.url+'/nombre');
-	}       
-        findAll(){
-            return fetch(this.url);
-        }
-        count(){
-            return fetch(this.url+'/count');
-        }
-
-        findRange(low, high){
-            return fetch(this.url+'/findRange?lower='+low+'&higher='+high);
-        }
-        
-        
-        
+	}      
 }
 
 export default MarcaResourceClient;

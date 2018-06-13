@@ -4,24 +4,12 @@ class AsuetoResourceClient extends AbstractResourceClient{
 
 	constructor(){
 		super();
-		this.url=this.url+'/asueto';
+		this.url=this.url+'/asuetos';
 	}
 
 	findByName () {
 		return fetch(this.url+'/nombre');
-	}       
-        findAll(){
-            return fetch(this.url);
-        }
-        count(){
-            return fetch(this.url+'/count');
-        }
-
-        findRange(low, high){
-            return fetch(this.url+'/findRange?lower='+low+'&higher='+high);
-        }
-        
-        
+	}            
         
 }
 
