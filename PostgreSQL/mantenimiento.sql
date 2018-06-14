@@ -885,6 +885,12 @@ COPY public.modelo (id_modelo, modelo, descripcion) FROM stdin;
 SELECT pg_catalog.setval('public.modelo_id_modelo_seq', 8, true);
 
 
+
+
+--
+-- Data for Name: modelo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
 COPY public.modelo (id_modelo, modelo, descripcion) FROM stdin;
 \.
 
@@ -1228,4 +1234,3 @@ ALTER TABLE ONLY public.solicitud
 --
 -- PostgreSQL database dump complete
 --
-
