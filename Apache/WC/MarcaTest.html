@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <title>Mocha Tests</title>
+    <link href="./css/test/mocha.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="mocha"></div>
+    <script src="chai.js"></script>
+    <script src="mocha.js"></script>
+
+    <script>
+        mocha.setup('bdd');
+    </script>
+
+
+    <script type="module" src="./test/MarcaResourceClientTest.js">
+    </script>
+    <script type="module">    
+        mocha.checkLeaks();
+        mocha.run();
+    </script>
+</body>
+</html>
