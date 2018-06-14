@@ -1,253 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Estado Detalle Mantenimiento</title>
-	
+
 </head>
+
 <body>
+	<style>
+		body {
+			background-color: lightyellow;
+		}
+
+		#titulo {
+			margin-left: 23%;
+		}
+	</style>
+	<template id="menu">
+
 		<style>
-				body{
-				background-color: lightyellow;
-				}
-				
-				#titulo{
-				margin-left: 34%;
-				}	
-				</style>
-<template id="menu">
-	
-		<style>
-	
-		/*Estilo general del menu*/
-		#minav ul{
-		    list-style: none;
-		    padding: 0;
-		}
-	
-		#minav li{
-		    line-height: 3rem;
-		    position: relative;
-		}
-	
-		.menu ul{
-		    position: absolute;
-		}
-	
-		#minav a{
-		    color: #ddd;
-		    display: block;
-		    padding: 0 4.6em;
-		    text-decoration: none;
-		    transition: .4s;
-		}
-	
-		#minav a:hover{
-		    color: #000;
-		    background: rgb(243, 235, 235);
-		}
-	
-		#minav li ul{
-		    display: none;
-		}
-	
-		#minav li:hover > ul{
-		    display: block;
-		}
-	
-		/*Primer nivel del menu*/
-		.menu{
-		    background: #333;
-		    display: table;
-			width: 100%;
-		}
-	
-		.menu > li{
-		    float: left;
-		}
-	
-		/*Segundo nivel del menu*/
-		#minav li li{
-		    background: #222;
-		    width: 210px;
-		    overflow: hidden;
-		    transition: all .5s;
-		}
-	
-		#minav li:hover > ul > li{
-		    max-height: 1000px;
-		    overflow: visible;
-		}
-	
-		.menu > li > ul{
-		    top: 100%;
-		}
-	
-		/*Tercer nivel del menu*/
-		.menu ul ul{
-		    left: 100%;
-		    top: 0;
-		}
+			/*Estilo general del menu*/
+
+			#minav ul {
+				list-style: none;
+				padding: 0;
+			}
+
+			#minav li {
+				line-height: 3rem;
+				position: relative;
+			}
+
+			.menu ul {
+				position: absolute;
+			}
+
+			#minav a {
+				color: #ddd;
+				display: block;
+				padding: 0 4.46em;
+				text-decoration: none;
+				transition: .4s;
+			}
+
+			#minav a:hover {
+				color: #000;
+				background: rgb(243, 235, 235);
+			}
+
+			#minav li ul {
+				display: none;
+			}
+
+			#minav li:hover>ul {
+				display: block;
+			}
+
+			/*Primer nivel del menu*/
+
+			.menu {
+				background: #333;
+				display: table;
+				width: 100%;
+			}
+
+			.menu>li {
+				float: left;
+			}
+
+			/*Segundo nivel del menu*/
+
+			#minav li li {
+				background: #222;
+				width: 210px;
+				overflow: hidden;
+				transition: all .5s;
+			}
+
+			#minav li:hover>ul>li {
+				max-height: 1000px;
+				overflow: visible;
+			}
+
+			.menu>li>ul {
+				top: 100%;
+			}
+
+			/*Tercer nivel del menu*/
+
+			.menu ul ul {
+				left: 100%;
+				top: 0;
+			}
 		</style>
-		
+
 	</template>
 	<menu-wc></menu-wc>
-<template id="tablas">
-	
-	<style>
-	
-		#micontainer{	
-			margin: auto;
-			overflow-x:auto;
-                        height: 440px;
-		}
-                ::-webkit-scrollbar {
-                        width: 10px;
-                }
-                /* Track */
-                ::-webkit-scrollbar-track {
-                    background: #ddd; 
-                }
-                ::-webkit-scrollbar-thumb {
-                    background-color: #1B882D;
-                } 
-                /* Handle on hover */
-                ::-webkit-scrollbar-thumb:hover {
-                    background: #529b5e; 
-                }
-		#tabla{
-			background: #fff;
-			border-collapse: collapse;
-			font-size: 1.5em;
-			margin:auto;
-			min-width: 1000px;
-		}
+	<template id="tablas">
 
-		#tabla tr td{
-			padding: 10px;
-		}
+		<style>
+			#micontainer {
+				margin: auto;
+				overflow-x: auto;
+				height: 440px;
+			}
 
-		#tabla tr th{
-			padding: 10px;
-                       
-			/*background: #22648C;*/
-		}
+			::-webkit-scrollbar {
+				width: 10px;
+			}
 
-		#tabla td,th{
-			border: 2px solid black;
-			padding: 20px;
-		}
+			/* Track */
 
-		#tabla tr:hover{
-			background: #30B676;
-		}
+			::-webkit-scrollbar-track {
+				background: #ddd;
+			}
 
-		#tabla tr td:hover{
-			background: #57DAA4;
-			border: solid 2px #1C7953;
-			cursor: pointer;
-			color: #FFFFFF;
-		}
+			::-webkit-scrollbar-thumb {
+				background-color: #1B882D;
+			}
 
-		#tabla tr th{
-			background: #1B882D;
-			border-bottom: solid 3.5px #1C431B;
-			color: #FFFFFF;
+			/* Handle on hover */
 
-		}
+			::-webkit-scrollbar-thumb:hover {
+				background: #529b5e;
+			}
 
-		tr:nth-child(even){
-			background-color: #ddd;
-		}
+			#tabla {
+				background: #fff;
+				border-collapse: collapse;
+				font-size: 1.5em;
+				margin: auto;
+				min-width: 1000px;
+			}
 
-		#atras{
-			padding: 15px;
-			margin-left: 0%;
-                        margin-bottom: 1%;
-                        border-radius: 5px;
-                        
-		}
+			#tabla tr td {
+				padding: 10px;
+			}
 
-                #atras:disabled{
-                        background-color: #eee;
-                        color: #aaa;
-                        border-radius: 5px;
-                        border: 0;
-                }
-                
-                #cmbPaginado{
-                     	padding: 15px;
-			margin-left: 5%;
-                        margin-bottom: 1%;
-                        border-radius: 5px;
-                }
+			#tabla tr th {
+				padding: 10px;
 
-		#siguiente{
-			padding: 15px;
-			margin-left: 5%;
-                        margin-bottom: 1%;
-                        border-radius: 5px;
-		}
-                 
-                #siguiente:disabled{
-                        background-color: #eee;
-                        color: #aaa;
-                        border-radius: 5px;
-                        border: 0;
-                }
-                
-                #primero{
-			padding: 15px;
-			margin-left: 37%;
-                        margin-bottom: 1%;
-                        border-radius: 5px;
-		}
-                 
-                #primero:disabled{
-                        background-color: #eee;
-                        color: #aaa;
-                        border-radius: 5px;
-                        border: 0;
-                }
-                #ultimo{
-			padding: 15px;
-			margin-left: 0%;
-                        margin-bottom: 1%;
-                        border-radius: 5px;
-		}
-                 
-                #ultimo:disabled{
-                        background-color: #eee;
-                        color: #aaa;
-                        border-radius: 5px;
-                        border: 0;
-                }
-                 
+				/*background: #22648C;*/
+			}
 
+			#tabla td,
+			th {
+				border: 2px solid black;
+				padding: 20px;
+			}
 
+			#tabla tr:hover {
+				background: #30B676;
+			}
 
-	</style>
+			#tabla tr td:hover {
+				background: #57DAA4;
+				border: solid 2px #1C7953;
+				cursor: pointer;
+				color: #FFFFFF;
+			}
 
-	<table id="tabla">
-		<slot name='dato'>
-			<slot name='datos'></slot>
-		</slot>
-			
-	</table>
-    </template>
-        	<h1 id="titulo"> Mostrando elementos de Estado Detalle Mantenimiento</h1>
-    <navegador-wc></navegador-wc><tabla-wc></tabla-wc>
-        <script type="module">
-            import Navegadorwc from './WebComponents/Navegadorwc.js';
-        </script> 
+			#tabla tr th {
+				background: #1B882D;
+				border-bottom: solid 3.5px #1C431B;
+				color: #FFFFFF;
+
+			}
+
+			tr:nth-child(even) {
+				background-color: #ddd;
+			}
+
+			#atras {
+				padding: 15px;
+				margin-left: 0%;
+				margin-bottom: 1%;
+				border-radius: 5px;
+
+			}
+
+			#atras:disabled {
+				background-color: #eee;
+				color: #aaa;
+				border-radius: 5px;
+				border: 0;
+			}
+
+			#cmbPaginado {
+				padding: 15px;
+				margin-left: 5%;
+				margin-bottom: 1%;
+				border-radius: 5px;
+			}
+
+			#siguiente {
+				padding: 15px;
+				margin-left: 5%;
+				margin-bottom: 1%;
+				border-radius: 5px;
+			}
+
+			#siguiente:disabled {
+				background-color: #eee;
+				color: #aaa;
+				border-radius: 5px;
+				border: 0;
+			}
+
+			#primero {
+				padding: 15px;
+				margin-left: 37%;
+				margin-bottom: 1%;
+				border-radius: 5px;
+			}
+
+			#primero:disabled {
+				background-color: #eee;
+				color: #aaa;
+				border-radius: 5px;
+				border: 0;
+			}
+
+			#ultimo {
+				padding: 15px;
+				margin-left: 0%;
+				margin-bottom: 1%;
+				border-radius: 5px;
+			}
+
+			#ultimo:disabled {
+				background-color: #eee;
+				color: #aaa;
+				border-radius: 5px;
+				border: 0;
+			}
+		</style>
+
+		<table id="tabla">
+			<slot name='dato'>
+				<slot name='datos'></slot>
+			</slot>
+
+		</table>
+	</template>
+	<h1 id="titulo"> Mostrando elementos de Estado Detalle Mantenimiento</h1>
+	<navegador-wc></navegador-wc>
+	<tabla-wc></tabla-wc>
 	<script type="module">
-            import Tablawc from './WebComponents/Tablawc.js';
-	</script> 
+		import Navegadorwc from './WebComponents/Navegadorwc.js';
+	</script>
 	<script type="module">
-			import Menuwc from './WebComponents/menu.js';
-		</script>
-        
+		import Tablawc from './WebComponents/Tablawc.js';
+	</script>
+	<script type="module">
+		import Menuwc from './WebComponents/menu.js';
+	</script>
+
 	<script type="module" src="./Controller/EstadoDetalleMantenimientoController.js"></script>
-	
+
 </body>
+
 </html>

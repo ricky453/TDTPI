@@ -12,7 +12,7 @@ background-color: lightyellow;
 }
 		
 #titulo{
-margin-left: 34%;
+margin-left: 32%;
 }	
 </style>
 <template id="menu">
@@ -20,74 +20,78 @@ margin-left: 34%;
 		<style>
 	
 		/*Estilo general del menu*/
-		#minav ul{
-		    list-style: none;
-		    padding: 0;
-		}
-	
-		#minav li{
-		    line-height: 3rem;
-		    position: relative;
-		}
-	
-		.menu ul{
-		    position: absolute;
-		}
-	
-		#minav a{
-		    color: #ddd;
-		    display: block;
-		    padding: 0 4.6em;
-		    text-decoration: none;
-		    transition: .4s;
-		}
-	
-		#minav a:hover{
-		    color: #000;
-		    background: rgb(243, 235, 235);
-		}
-	
-		#minav li ul{
-		    display: none;
-		}
-	
-		#minav li:hover > ul{
-		    display: block;
-		}
-	
-		/*Primer nivel del menu*/
-		.menu{
-		    background: #333;
-		    display: table;
-			width: 100%;
-		}
-	
-		.menu > li{
-		    float: left;
-		}
-	
-		/*Segundo nivel del menu*/
-		#minav li li{
-		    background: #222;
-		    width: 210px;
-		    overflow: hidden;
-		    transition: all .5s;
-		}
-	
-		#minav li:hover > ul > li{
-		    max-height: 1000px;
-		    overflow: visible;
-		}
-	
-		.menu > li > ul{
-		    top: 100%;
-		}
-	
-		/*Tercer nivel del menu*/
-		.menu ul ul{
-		    left: 100%;
-		    top: 0;
-		}
+
+			#minav ul {
+				list-style: none;
+				padding: 0;
+			}
+
+			#minav li {
+				line-height: 3rem;
+				position: relative;
+			}
+
+			.menu ul {
+				position: absolute;
+			}
+
+			#minav a {
+				color: #ddd;
+				display: block;
+				padding: 0 4.4em;
+				text-decoration: none;
+				transition: .4s;
+			}
+
+			#minav a:hover {
+				color: #000;
+				background: rgb(243, 235, 235);
+			}
+
+			#minav li ul {
+				display: none;
+			}
+
+			#minav li:hover>ul {
+				display: block;
+			}
+
+			/*Primer nivel del menu*/
+
+			.menu {
+				background: #333;
+				display: table;
+				width: 100%;
+			}
+
+			.menu>li {
+				float: left;
+			}
+
+			/*Segundo nivel del menu*/
+
+			#minav li li {
+				background: #222;
+				width: 210px;
+				overflow: hidden;
+				transition: all .5s;
+			}
+
+			#minav li:hover>ul>li {
+				max-height: 1000px;
+				overflow: visible;
+			}
+
+			.menu>li>ul {
+				top: 100%;
+			}
+
+			/*Tercer nivel del menu*/
+
+			.menu ul ul {
+				left: 100%;
+				top: 0;
+			}
 		</style>
 		
 	</template>

@@ -11,8 +11,8 @@ class Navegadorwc extends HTMLElement{
 	}
 
 	connectedCallback(){
-                //botones
-              
+ 
+
 		let atras=document.createElement('button');
 		atras.innerText='<';
 		atras.setAttribute('id', 'atras');
@@ -52,6 +52,7 @@ class Navegadorwc extends HTMLElement{
                     opcion.setAttribute("value", value);
                     cmbPaginado.appendChild(opcion);
                 });
+                
                 
                 this._shadowRoot.appendChild(primero);
 		this._shadowRoot.appendChild(atras);

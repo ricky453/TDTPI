@@ -1,254 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Marca</title>
-	
+
 </head>
+
 <body>
 	<style>
-	body{
- 	background-color: lightyellow;
-	}
+		body {
+			background-color: lightyellow;
+		}
 
-	#titulo{
-    	margin-left: 34%;
-	}	
+		#titulo {
+			margin-left: 34%;
+		}
 	</style>
 
-	
-<template id="menu">
-	
-	<style>
 
-	/*Estilo general del menu*/
-	#minav ul{
-    	list-style: none;
-    	padding: 0;
-	}
+	<template id="menu">
 
-	#minav li{
-    	line-height: 3rem;
-    	position: relative;
-	}
+		<style>
+			/*Estilo general del menu*/
 
-	.menu ul{
-    	position: absolute;
-	}
+			#minav ul {
+				list-style: none;
+				padding: 0;
+			}
 
-	#minav a{
-    	color: #ddd;
-    	display: block;
-    	padding: 0 4.6em;
-    	text-decoration: none;
-    	transition: .4s;
-	}
+			#minav li {
+				line-height: 3rem;
+				position: relative;
+			}
 
-	#minav a:hover{
-    	color: #000;
-    	background: rgb(243, 235, 235);
-	}
+			.menu ul {
+				position: absolute;
+			}
 
-	#minav li ul{
-    	display: none;
-	}
+			#minav a {
+				color: #ddd;
+				display: block;
+				padding: 0 4.4em;
+				text-decoration: none;
+				transition: .4s;
+			}
 
-	#minav li:hover > ul{
-    	display: block;
-	}
+			#minav a:hover {
+				color: #000;
+				background: rgb(243, 235, 235);
+			}
 
-	/*Primer nivel del menu*/
-	.menu{
-    	background: #333;
-    	display: table;
-	width: 100%;
-	}
+			#minav li ul {
+				display: none;
+			}
 
-	.menu > li{
-    	float: left;
-	}
+			#minav li:hover>ul {
+				display: block;
+			}
 
-	/*Segundo nivel del menu*/
-	#minav li li{
-    	background: #222;
-    	width: 210px;
-    	overflow: hidden;
-    	transition: all .5s;
-	}
+			/*Primer nivel del menu*/
 
-	#minav li:hover > ul > li{
-    	max-height: 1000px;
-    	overflow: visible;
-	}
+			.menu {
+				background: #333;
+				display: table;
+				width: 100%;
+			}
 
-	.menu > li > ul{
-    	top: 100%;
-	}
+			.menu>li {
+				float: left;
+			}
 
-	/*Tercer nivel del menu*/
-	.menu ul ul{
-    	left: 100%;
-    	top: 0;
-	}
-	</style>
-	
-</template>
+			/*Segundo nivel del menu*/
 
-<menu-wc></menu-wc>
+			#minav li li {
+				background: #222;
+				width: 210px;
+				overflow: hidden;
+				transition: all .5s;
+			}
 
-<template id="tablas">
-	
-	<style>
-	
-		#micontainer{	
-			margin: auto;
-			overflow-x:auto;
-                        height: 440px;
-		}
-                ::-webkit-scrollbar {
-                        width: 10px;
-                }
-                /* Track */
-                ::-webkit-scrollbar-track {
-                    background: #ddd; 
-                }
-                ::-webkit-scrollbar-thumb {
-                    background-color: #1B882D;
-                } 
-                /* Handle on hover */
-                ::-webkit-scrollbar-thumb:hover {
-                    background: #529b5e; 
-                }
-		#tabla{
-			background: #fff;
-			border-collapse: collapse;
-			font-size: 1.5em;
-			margin:auto;
-			min-width: 1000px;
-		}
+			#minav li:hover>ul>li {
+				max-height: 1000px;
+				overflow: visible;
+			}
 
-		#tabla tr td{
-			padding: 10px;
-		}
+			.menu>li>ul {
+				top: 100%;
+			}
 
-		#tabla tr th{
-			padding: 10px;
-                       
-			/*background: #22648C;*/
-		}
+			/*Tercer nivel del menu*/
 
-		#tabla td,th{
-			border: 2px solid black;
-			padding: 20px;
-		}
+			.menu ul ul {
+				left: 100%;
+				top: 0;
+			}
+		</style>
 
-		#tabla tr:hover{
-			background: #30B676;
-		}
+	</template>
 
-		#tabla tr td:hover{
-			background: #57DAA4;
-			border: solid 2px #1C7953;
-			cursor: pointer;
-			color: #FFFFFF;
-		}
+	<menu-wc></menu-wc>
 
-		#tabla tr th{
-			background: #1B882D;
-			border-bottom: solid 3.5px #1C431B;
-			color: #FFFFFF;
+	<template id="tablas">
 
-		}
+		<style>
+			#micontainer {
+				margin: auto;
+				overflow-x: auto;
+				height: 440px;
+			}
 
-		tr:nth-child(even){
-			background-color: #ddd;
-		}
+			::-webkit-scrollbar {
+				width: 10px;
+			}
 
-		#atras{
-			padding: 15px;
-			margin-left: 0%;
-                        margin-bottom: 1%;
-                        border-radius: 5px;
-                        
-		}
+			/* Track */
 
-                #atras:disabled{
-                        background-color: #eee;
-                        color: #aaa;
-                        border-radius: 5px;
-                        border: 0;
-                }
-                
-                #cmbPaginado{
-                     	padding: 15px;
-			margin-left: 5%;
-                        margin-bottom: 1%;
-                        border-radius: 5px;
-                }
+			::-webkit-scrollbar-track {
+				background: #ddd;
+			}
 
-		#siguiente{
-			padding: 15px;
-			margin-left: 5%;
-                        margin-bottom: 1%;
-                        border-radius: 5px;
-		}
-                 
-                #siguiente:disabled{
-                        background-color: #eee;
-                        color: #aaa;
-                        border-radius: 5px;
-                        border: 0;
-                }
-                
-                #primero{
-			padding: 15px;
-			margin-left: 37%;
-                        margin-bottom: 1%;
-                        border-radius: 5px;
-		}
-                 
-                #primero:disabled{
-                        background-color: #eee;
-                        color: #aaa;
-                        border-radius: 5px;
-                        border: 0;
-                }
-                #ultimo{
-			padding: 15px;
-			margin-left: 0%;
-                        margin-bottom: 1%;
-                        border-radius: 5px;
-		}
-                 
-                #ultimo:disabled{
-                        background-color: #eee;
-                        color: #aaa;
-                        border-radius: 5px;
-                        border: 0;
-                }
-                 
-	</style>
+			::-webkit-scrollbar-thumb {
+				background-color: #1B882D;
+			}
 
-	<table id="tabla">
-		<slot name='dato'>
-			<slot name='datos'></slot>
-		</slot>
-			
-	</table>
-    </template>
-        	<h1 id="titulo"> Mostrando elementos de Marca</h1>
-    <navegador-wc></navegador-wc><tabla-wc></tabla-wc>
-        <script type="module">
-            import Navegadorwc from './WebComponents/Navegadorwc.js';
-        </script> 
+			/* Handle on hover */
+
+			::-webkit-scrollbar-thumb:hover {
+				background: #529b5e;
+			}
+
+			#tabla {
+				background: #fff;
+				border-collapse: collapse;
+				font-size: 1.5em;
+				margin: auto;
+				min-width: 1000px;
+			}
+
+			#tabla tr td {
+				padding: 10px;
+			}
+
+			#tabla tr th {
+				padding: 10px;
+
+				/*background: #22648C;*/
+			}
+
+			#tabla td,
+			th {
+				border: 2px solid black;
+				padding: 20px;
+			}
+
+			#tabla tr:hover {
+				background: #30B676;
+			}
+
+			#tabla tr td:hover {
+				background: #57DAA4;
+				border: solid 2px #1C7953;
+				cursor: pointer;
+				color: #FFFFFF;
+			}
+
+			#tabla tr th {
+				background: #1B882D;
+				border-bottom: solid 3.5px #1C431B;
+				color: #FFFFFF;
+
+			}
+
+			tr:nth-child(even) {
+				background-color: #ddd;
+			}
+
+			#atras {
+				padding: 15px;
+				margin-left: 0%;
+				margin-bottom: 1%;
+				border-radius: 5px;
+
+			}
+
+			#atras:disabled {
+				background-color: #eee;
+				color: #aaa;
+				border-radius: 5px;
+				border: 0;
+			}
+
+			#cmbPaginado {
+				padding: 15px;
+				margin-left: 5%;
+				margin-bottom: 1%;
+				border-radius: 5px;
+			}
+
+			#siguiente {
+				padding: 15px;
+				margin-left: 5%;
+				margin-bottom: 1%;
+				border-radius: 5px;
+			}
+
+			#siguiente:disabled {
+				background-color: #eee;
+				color: #aaa;
+				border-radius: 5px;
+				border: 0;
+			}
+
+			#primero {
+				padding: 15px;
+				margin-left: 37%;
+				margin-bottom: 1%;
+				border-radius: 5px;
+			}
+
+			#primero:disabled {
+				background-color: #eee;
+				color: #aaa;
+				border-radius: 5px;
+				border: 0;
+			}
+
+			#ultimo {
+				padding: 15px;
+				margin-left: 0%;
+				margin-bottom: 1%;
+				border-radius: 5px;
+			}
+
+			#ultimo:disabled {
+				background-color: #eee;
+				color: #aaa;
+				border-radius: 5px;
+				border: 0;
+			}
+		</style>
+
+		<table id="tabla">
+			<slot name='dato'>
+				<slot name='datos'></slot>
+			</slot>
+
+		</table>
+	</template>
+	<h1 id="titulo"> Mostrando elementos de Marca</h1>
+	<navegador-wc></navegador-wc>
+	<tabla-wc></tabla-wc>
+
 	<script type="module">
-            import Tablawc from './WebComponents/Tablawc.js';
-        </script> 
-        
+		import Navegadorwc from './WebComponents/Navegadorwc.js';
+	</script>
+	<script type="module">
+		import Tablawc from './WebComponents/Tablawc.js';
+	</script>
+
 	<script type="module" src="./Controller/MarcaController.js"></script>
 	<script type="module">
 		import Menuwc from './WebComponents/menu.js';
-	</script> 
-	
+	</script>
+
+
 </body>
+
 </html>
