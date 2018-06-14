@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Solicitud</title>
+
+</head>
+
+<body>
+	<style>
+		body {
+			background-color: lightyellow;
+		}
+
+		#titulo {
+			margin-left: 34%;
+		}
+	</style>
+	<template id="menu">
+
+		<style>
+			/*Estilo general del menu*/
+
+			#minav ul {
+				list-style: none;
+				padding: 0;
+			}
+
+			#minav li {
+				line-height: 3rem;
+				position: relative;
+			}
+
+			.menu ul {
+				position: absolute;
+			}
+
+			#minav a {
+				color: #ddd;
+				display: block;
+				padding: 0 4.46em;
+				text-decoration: none;
+				transition: .4s;
+			}
+
+			#minav a:hover {
+				color: #000;
+				background: rgb(243, 235, 235);
+			}
+
+			#minav li ul {
+				display: none;
+			}
+
+			#minav li:hover>ul {
+				display: block;
+			}
+
+			/*Primer nivel del menu*/
+
+			.menu {
+				background: #333;
+				display: table;
+				width: 100%;
+			}
+
+			.menu>li {
+				float: left;
+			}
+
+			/*Segundo nivel del menu*/
+
+			#minav li li {
+				background: #222;
+				width: 210px;
+				overflow: hidden;
+				transition: all .5s;
+			}
+
+			#minav li:hover>ul>li {
+				max-height: 1000px;
+				overflow: visible;
+			}
+
+			.menu>li>ul {
+				top: 100%;
+			}
+
+			/*Tercer nivel del menu*/
+
+			.menu ul ul {
+				left: 100%;
+				top: 0;
+			}
+		</style>
+
+	</template>
+	<menu-wc></menu-wc>
+	<template id="tablas">
+
+		<style>
+			#micontainer {
+				margin: auto;
+				overflow-x: auto;
+				height: 440px;
+			}
+
+			::-webkit-scrollbar {
+				width: 10px;
+			}
+
+			/* Track */
+
+			::-webkit-scrollbar-track {
+				background: #ddd;
+			}
+
+			::-webkit-scrollbar-thumb {
+				background-color: #1B882D;
+			}
+
+			/* Handle on hover */
+
+			::-webkit-scrollbar-thumb:hover {
+				background: #529b5e;
+			}
+
+			#tabla {
+				background: #fff;
+				border-collapse: collapse;
+				font-size: 1.5em;
+				margin: auto;
+				min-width: 1000px;
+			}
+
+			#tabla tr td {
+				padding: 10px;
+			}
+
+			#tabla tr th {
+				padding: 10px;
+
+				/*background: #22648C;*/
+			}
+
+			#tabla td,
+			th {
+				border: 2px solid black;
+				padding: 20px;
+			}
+
+			#tabla tr:hover {
+				background: #30B676;
+			}
+
+			#tabla tr td:hover {
+				background: #57DAA4;
+				border: solid 2px #1C7953;
+				cursor: pointer;
+				color: #FFFFFF;
+			}
+
+			#tabla tr th {
+				background: #1B882D;
+				border-bottom: solid 3.5px #1C431B;
+				color: #FFFFFF;
+
+			}
+
+			tr:nth-child(even) {
+				background-color: #ddd;
+			}
+
+			#atras {
+				padding: 15px;
+				margin-left: 0%;
+				margin-bottom: 1%;
+				border-radius: 5px;
+
+			}
+
+			#atras:disabled {
+				background-color: #eee;
+				color: #aaa;
+				border-radius: 5px;
+				border: 0;
+			}
+
+			#cmbPaginado {
+				padding: 15px;
+				margin-left: 5%;
+				margin-bottom: 1%;
+				border-radius: 5px;
+			}
+
+			#siguiente {
+				padding: 15px;
+				margin-left: 5%;
+				margin-bottom: 1%;
+				border-radius: 5px;
+			}
+
+			#siguiente:disabled {
+				background-color: #eee;
+				color: #aaa;
+				border-radius: 5px;
+				border: 0;
+			}
+
+			#primero {
+				padding: 15px;
+				margin-left: 37%;
+				margin-bottom: 1%;
+				border-radius: 5px;
+			}
+
+			#primero:disabled {
+				background-color: #eee;
+				color: #aaa;
+				border-radius: 5px;
+				border: 0;
+			}
+
+			#ultimo {
+				padding: 15px;
+				margin-left: 0%;
+				margin-bottom: 1%;
+				border-radius: 5px;
+			}
+
+			#ultimo:disabled {
+				background-color: #eee;
+				color: #aaa;
+				border-radius: 5px;
+				border: 0;
+			}
+		</style>
+
+		<table id="tabla">
+			<slot name='dato'>
+				<slot name='datos'></slot>
+			</slot>
+
+		</table>
+	</template>
+	<h1 id="titulo"> Mostrando elementos de Solicitud</h1>
+	<navegador-wc></navegador-wc>
+	<tabla-wc></tabla-wc>
+
+	<boton-wc></boton-wc>
+	<template id="boton">
+		<style>
+			#abrirModal{
+				position: absolute;
+				padding: 15px;
+				margin-left: 80%;
+				margin-bottom: 1%;
+				border-radius: 5px;
+				margin-top: -100px;
+				font-size: 20px;
+			}
+
+			#abrirModal:hover{
+				cursor: pointer;
+			}
+		</style>
+	</template>
+	<modal-wc></modal-wc>
+	<template id="modal">
+		<style>
+			.modal{
+				display: none;
+				position: fixed;
+				z-index: 1;
+				left: 0;
+				top: 0;
+				height: 100%;
+				width: 100%;
+				overflow: auto;
+				background-color: rgba(0, 0, 0, 0.5);
+			}
+
+			.modal-content{
+				background-color: #f4f4f4;
+				margin: 20% auto;
+				padding: 20px;
+				width: 50%;
+				box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+			}
+
+			.closeBtn{
+				color: #ccc;
+				float: right;
+				font-size: 20px;
+			}
+
+			.closeBtn:hover, .closeBtn:focus{
+				color: #000;
+				text-decoration: none;
+				cursor: pointer;
+			}
+		</style>
+	</template>
+
+	<script type="module">
+		import Navegadorwc from './WebComponents/Navegadorwc.js';
+	</script>
+	<script type="module">
+		import Tablawc from './WebComponents/Tablawc.js';
+	</script>
+	<script type="module">
+		import Menuwc from './WebComponents/menu.js';
+	</script>
+	<script type="module">
+		import Botonwc from './WebComponents/boton.js';
+	</script>
+	<script type="module">
+		import Modalwc from './WebComponents/Modalwc.js';
+	</script>
+
+	<script type="module" src="./Controller/SolicitudController.js"></script>
+
+	<!--<script>
+
+		let modal = document.querySelector('modal-wc').getElementsByClassName('modal')[0];
+
+		let modalBtn = document.querySelector('boton-wc').getElementsByClassName('boton')[0];
+
+		let closeBtn = document.querySelector('modal-wc').getElementsByClassName('closeBtn')[0];
+
+		if (modal) {
+			modalBtn.addEventListener('click', openModal);
+		}
+		
+		if (modalBtn) {
+			closeBtn.addEventListener('click', closeModal);	
+		}
+		
+		if (closeBtn) {
+			window.addEventListener('click', clickOutside);	
+		}
+
+		function openModal(){
+			modal.style.display = 'block';
+		}
+
+		function closeModal(){
+			modal.style.display = 'none';
+		}
+
+		function clickOutside(e){
+			if(e.target == modal){
+				modal.style.display = 'none';
+			}
+		}
+
+		
+
+		
+	</script>-->
+
+</body>
+
+</html>
