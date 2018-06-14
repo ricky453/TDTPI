@@ -842,48 +842,12 @@ COPY public.marca (id_marca, marca, descripcion, activo) FROM stdin;
 19	FUJITSU	DESCRIPCION	true
 20	SIMPLETECH	DESCRIPCION	true
 \.
+
 --
 -- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.marca_id_marca_seq', 20, true);
-
-
-COPY public.diagnostico_parte (id_diagnostico_parte, parte, observaciones) FROM stdin;
-1	MONITOR	NULL
-2	MOUSE	NULL
-3	TECLADO	NULL
-4	CPU	NULL
-5	BATERIA	NULL
-6	VENTILADOR	NULL
-7	CAMARA WEB	NULL
-8	CARGADOR	NULL
-9	CASEE	NULL
-10	LENTE	NULL
-\.
---
--- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.diagnostico_parte_id_diagnostico_parte_seq', 10, true);
-
-
-COPY public.modelo (id_modelo, modelo, descripcion) FROM stdin;
-1	PAVILION	NULL
-2	ASPIRE	NULL
-3	CANON	NULL
-4	WINSTON	NULL
-5	SHERMAN	NULL
-6	DATUS	NULL
-7	STARWAT	NULL
-8	MONTIER	NULL
-\.
---
--- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.modelo_id_modelo_seq', 8, true);
-
 
 
 
@@ -1231,7 +1195,96 @@ ALTER TABLE ONLY public.solicitud
     ADD CONSTRAINT solicitud_id_tipo_mantenimiento_fkey FOREIGN KEY (id_tipo_mantenimiento) REFERENCES public.tipo_mantenimiento(id_tipo_mantenimiento);
 
 
+INSERT INTO public.diagnostico_parte (id_diagnostico_parte, parte, observaciones) VALUES (1, 'MONITOR', NULL);
+INSERT INTO public.diagnostico_parte (id_diagnostico_parte, parte, observaciones) VALUES (2, 'MOUSE', NULL);
+INSERT INTO public.diagnostico_parte (id_diagnostico_parte, parte, observaciones) VALUES (3, 'TECLADO', NULL);
+INSERT INTO public.diagnostico_parte (id_diagnostico_parte, parte, observaciones) VALUES (4, 'CPU', NULL);
+INSERT INTO public.diagnostico_parte (id_diagnostico_parte, parte, observaciones) VALUES (5, 'BATERIA', NULL);
+INSERT INTO public.diagnostico_parte (id_diagnostico_parte, parte, observaciones) VALUES (6, 'VENTILADOR', NULL);
+INSERT INTO public.diagnostico_parte (id_diagnostico_parte, parte, observaciones) VALUES (7, 'CAMARA WEB', NULL);
+INSERT INTO public.diagnostico_parte (id_diagnostico_parte, parte, observaciones) VALUES (8, 'CARGADOR', NULL);
+INSERT INTO public.diagnostico_parte (id_diagnostico_parte, parte, observaciones) VALUES (9, 'CASE', NULL);
+INSERT INTO public.diagnostico_parte (id_diagnostico_parte, parte, observaciones) VALUES (10, 'LENTE', NULL);
+
+INSERT INTO public.modelo (id_modelo, modelo, descripcion) VALUES (1, 'PAVILION', NULL);
+INSERT INTO public.modelo (id_modelo, modelo, descripcion) VALUES (2, 'ASPIRE', NULL);
+INSERT INTO public.modelo (id_modelo, modelo, descripcion) VALUES (3, 'CANON', NULL);
+INSERT INTO public.modelo (id_modelo, modelo, descripcion) VALUES (4, 'WINSTON', NULL);
+INSERT INTO public.modelo (id_modelo, modelo, descripcion) VALUES (5, 'SHERMAN', NULL);
+INSERT INTO public.modelo (id_modelo, modelo, descripcion) VALUES (6, 'DATUS', NULL);
+INSERT INTO public.modelo (id_modelo, modelo, descripcion) VALUES (7, 'STARWAT', NULL);
+INSERT INTO public.modelo (id_modelo, modelo, descripcion) VALUES (8, 'MONTIER', NULL);
+
+INSERT INTO public.pasos (id_paso, paso) VALUES (1, 'PREPARAR EQUIPO, DESARMAR EL EQUIPO, LIMPIAR CUIDADOSAMENTE EL EQUIPO, ARMAR EL EQUIPO');
+INSERT INTO public.pasos (id_paso, paso) VALUES (2, 'PREPARAR ANTIVIRUS, ESPERAR ANALISIS, ELIMINAR VIRUS');
+INSERT INTO public.pasos (id_paso, paso) VALUES (3, 'PREPARAR EQUIPO, HACER RESPALDO, FORMATEAR EL EQUIPO');
+
+INSERT INTO public.procedimiento (id_procedimiento, procedimiento, id_pasos) VALUES (1, 'LIMPIEZA INTERNA', 1);
+INSERT INTO public.procedimiento (id_procedimiento, procedimiento, id_pasos) VALUES (2, 'ESCANEO DE VIRUS', 2);
+INSERT INTO public.procedimiento (id_procedimiento, procedimiento, id_pasos) VALUES (3, 'FORMATEO DE PC', 3);
+
+INSERT INTO public.equipo (id_equipo, serie, unidad) VALUES (1, 'AJSHD820-11', 'DEPARTAMENTO DE INGENIERIA');
+INSERT INTO public.equipo (id_equipo, serie, unidad) VALUES (2, 'GB217379-22', 'DEPARTAMENTO DE FISICA');
+INSERT INTO public.equipo (id_equipo, serie, unidad) VALUES (3, 'LSDJS8S7-33', 'DEPARTAMENTO DE ECONOMIA');
+INSERT INTO public.equipo (id_equipo, serie, unidad) VALUES (4, 'TG906754-44', 'DEPARTAMENTO DE SOCIOLOGIA');
+INSERT INTO public.equipo (id_equipo, serie, unidad) VALUES (5, 'EISJSQUS-55', 'DEPARTAMENTO DE LETRAS');
+INSERT INTO public.equipo (id_equipo, serie, unidad) VALUES (6, 'RV679834-66', 'DEPARTAMENTO DE IDIOMAS');
+INSERT INTO public.equipo (id_equipo, serie, unidad) VALUES (7, 'JS7SHSGS-77', 'BIBLIOTECA');
+
+INSERT INTO public.diagnostico (id_diagnostico, diagnostico, id_procedimiento, id_diagnostico_parte) VALUES (1, 'VIRUS', 2, 2);
+INSERT INTO public.diagnostico (id_diagnostico, diagnostico, id_procedimiento, id_diagnostico_parte) VALUES (2, 'LIMPIEZA', 1, 4);
+INSERT INTO public.diagnostico (id_diagnostico, diagnostico, id_procedimiento, id_diagnostico_parte) VALUES (3, 'FORMATEO', 3, 1);
+
+INSERT INTO public.trabajadores (id_trabajador, nombres, apellidos, email) VALUES (1, 'MICHAEL', 'JACKSON', 'michaeljackson@gmail.com');
+INSERT INTO public.trabajadores (id_trabajador, nombres, apellidos, email) VALUES (2, 'FRANCISCO', 'FLORES', 'paquitoflores@gmail.com');
+INSERT INTO public.trabajadores (id_trabajador, nombres, apellidos, email) VALUES (3, 'ENRIQUE', 'PENA NIETO', 'penanieto@gmail.com');
+INSERT INTO public.trabajadores (id_trabajador, nombres, apellidos, email) VALUES (4, 'NAYIB', 'BUKELE', 'tionayib@gmail.com');
+INSERT INTO public.trabajadores (id_trabajador, nombres, apellidos, email) VALUES (5, 'SALVADOR', 'SANCHEZ CEREN', 'elprofe@gmail.com');
+INSERT INTO public.trabajadores (id_trabajador, nombres, apellidos, email) VALUES (6, 'EUGENIO', 'CHICAS', 'amimegustanmenores@gmail.com');
+INSERT INTO public.trabajadores (id_trabajador, nombres, apellidos, email) VALUES (7, 'REGINA', 'CANAS', 'tiabubu@gmail.com');
+
+INSERT INTO public.cargo (id_cargo, cargo, descripcion, id_trabajadores) VALUES (1, 'ESTUDIANTE', NULL, 1);
+INSERT INTO public.cargo (id_cargo, cargo, descripcion, id_trabajadores) VALUES (2, 'TECNICO', NULL, 3);
+INSERT INTO public.cargo (id_cargo, cargo, descripcion, id_trabajadores) VALUES (3, 'CATEDRATICO', NULL, 5);
+
+INSERT INTO public.detalle_equipo (id_detalle_equipo, dispositivo, descripcion, id_marca, id_modelo, id_equipo) VALUES (1, 'PC', NULL, 1, 2, 3);
+INSERT INTO public.detalle_equipo (id_detalle_equipo, dispositivo, descripcion, id_marca, id_modelo, id_equipo) VALUES (2, 'PC', NULL, 2, 3, 4);
+INSERT INTO public.detalle_equipo (id_detalle_equipo, dispositivo, descripcion, id_marca, id_modelo, id_equipo) VALUES (3, 'IMPRESORA', NULL, 1, 5, 7);
+INSERT INTO public.detalle_equipo (id_detalle_equipo, dispositivo, descripcion, id_marca, id_modelo, id_equipo) VALUES (4, 'PC', NULL, 3, 4, 3);
+INSERT INTO public.detalle_equipo (id_detalle_equipo, dispositivo, descripcion, id_marca, id_modelo, id_equipo) VALUES (5, 'PC', NULL, 8, 2, 3);
+INSERT INTO public.detalle_equipo (id_detalle_equipo, dispositivo, descripcion, id_marca, id_modelo, id_equipo) VALUES (6, 'PC', NULL, 9, 6, 7);
+
+INSERT INTO public.tipo_mantenimiento (id_tipo_mantenimiento, tipo_mantenimiento, observaciones) VALUES (1, 'PREVENTIDOS PROGRAMADOS', NULL);
+INSERT INTO public.tipo_mantenimiento (id_tipo_mantenimiento, tipo_mantenimiento, observaciones) VALUES (2, 'PREVENTIDOS NO PROGRAMADOS', NULL);
+INSERT INTO public.tipo_mantenimiento (id_tipo_mantenimiento, tipo_mantenimiento, observaciones) VALUES (3, 'CORRECTIVOS', NULL);
+
+INSERT INTO public.solicitud (id_solicitud, fecha, responsable, email, telefono, descripcion, id_equipo, id_tipo_mantenimiento) VALUES (2, '2018-06-11', 'OSCAR RODRIGUEZ', 'oscar@gmail.com', '71234567', NULL, 1, 1);
+INSERT INTO public.solicitud (id_solicitud, fecha, responsable, email, telefono, descripcion, id_equipo, id_tipo_mantenimiento) VALUES (3, '2018-06-12', 'ISMAEL AREVALO', 'kike@gmail.com', '71234567', NULL, 1, 2);
+INSERT INTO public.solicitud (id_solicitud, fecha, responsable, email, telefono, descripcion, id_equipo, id_tipo_mantenimiento) VALUES (1, '2018-06-13', 'IVAN PORTILLO', 'ivanconb@gmail.com', '71234567', NULL, 1, 3);
+INSERT INTO public.solicitud (id_solicitud, fecha, responsable, email, telefono, descripcion, id_equipo, id_tipo_mantenimiento) VALUES (4, '2018-06-14', 'EVELYN MAGANA', 'eve@gmail.com', '71234567', NULL, 1, 1);
+INSERT INTO public.solicitud (id_solicitud, fecha, responsable, email, telefono, descripcion, id_equipo, id_tipo_mantenimiento) VALUES (5, '2018-06-15', 'ARMANDO CASAS', 'martillando@gmail.com', '71234567', NULL, 1, 2);
+INSERT INTO public.solicitud (id_solicitud, fecha, responsable, email, telefono, descripcion, id_equipo, id_tipo_mantenimiento) VALUES (6, '2018-06-16', 'ARMANDO GUERRA', 'pumpum@gmail.com', '71234567', NULL, 1, 3);
+INSERT INTO public.solicitud (id_solicitud, fecha, responsable, email, telefono, descripcion, id_equipo, id_tipo_mantenimiento) VALUES (7, '2018-06-17', 'BENITO CAMELO', 'benitocamelo@gmail.com', '71234567', NULL, 1, 1);
+
+INSERT INTO public.asuetos(id_asueto, fecha, descripcion) VALUES (1, '2018-05-01', 'DIA DEL TRABAJO');
+INSERT INTO public.asuetos(id_asueto, fecha, descripcion) VALUES (2, '2018-05-10', 'DIA DE LAS MADRES');
+
+INSERT INTO public.calendario(id_calendario, fecha_inicio, decripcion, responsable, telefono, fecha_fin, cantidad, id_asuetos) VALUES (1, '2018-06-05', 'REALIZAR LIMPIEZA DE PC', 'OSCAR RODRIGUEZ', '75647464', '2018-06-13', 1, NULL);
+
+INSERT INTO public.orden_trabajo(id_orden_trabajo, fecha_inicio, prioridad, id_solicitud, id_calendario) VALUES (1, '2018-06-01', NULL, 1, 1);
+
+INSERT INTO public.detalle_mantenimiento(id_detalle_mantenimiento, "hardware/software", detalle_harware, detalle_software, id_orden_trabajo) VALUES (1, 'HARDWARE', NULL, NULL, 1);
+
+INSERT INTO public.estado_detalle_mantenimiento(id_estado_detalle_mantenimiento, estado, observaciones, id_detalle_mantenimiento, id_procedimiento) VALUES (1, 'ACTIVO', NULL, 1, 1);
+
+INSERT INTO public.orden_trabajo_por_trabajadores(detalle, id_trabajadores, id_orden_trabajo) VALUES ('NECESITA LIMPIEZA', 1, 1);
+
+
+
+
+
+
+
 --
 -- PostgreSQL database dump complete
 --
-

@@ -22,7 +22,7 @@ services:
      - '5430:5432'
    restart: always
    volumes:
-     - postgresManData:/var/lib/postgresql/data 
+     - postgresManData4:/var/lib/postgresql/data 
    networks:
      - webnet
 
@@ -31,7 +31,7 @@ services:
    build: ./PayaraMicro/.
    container_name: 'payaramicroman'
    ports:
-     - "9090:8080"
+     - "9090:8484"
      - "7070:8181"
      - "4848:4848"
    depends_on:
@@ -45,4 +45,4 @@ networks:
  webnet:
 
 volumes:
- postgresManData:
+ postgresManData4:
