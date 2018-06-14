@@ -885,10 +885,157 @@ COPY public.modelo (id_modelo, modelo, descripcion) FROM stdin;
 SELECT pg_catalog.setval('public.modelo_id_modelo_seq', 8, true);
 
 
+COPY public.pasos (id_paso, paso) FROM stdin;
+1	PREPARAR EQUIPO, DESARMAR EL EQUIPO, LIMPIAR CUIDADOSAMENTE EL EQUIPO, ARMAR EL EQUIPO
+2	PREPARAR ANTIVIRUS, ESPERAR ANALISIS, ELIMINAR VIRUS	NULL
+3	PREPARAR EQUIPO, HACER RESPALDO, FORMATEAR EL EQUIPO	NULL
 
-
+\.
 --
--- Data for Name: modelo; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.pasos_id_paso_seq', 3, true);
+
+COPY public.equipo (id_equipo, serie, unidad) FROM stdin;
+1	ASJSHSAJS-22	DEPARTAMENTO DE INGENIERIA
+2	KSDKSDSKJ-12	DEPARTAMENTO DE FISICA
+3	KSDSJDJIU-21	DEPARTAMENTO DE ECONOMIA
+4	POWIWIWUW-98	DEPARTAMENTO DE LETRAS
+5	ISUSJSLSS-45	DEPARTAMENTO DE IDIOMAS
+
+\.
+--
+-- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.equipo_id_equipo_seq', 3, true);
+
+COPY public.diagnostico (id_diagnostico, diagnostico, id_procedimiento, id_diagnostico_parte) FROM stdin;
+1	VIRUS	2	2
+2	LIMPIEZA	1	4
+3	FORMATEO	3	1
+
+\.
+--
+-- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.diagnostico_id_diagnostico_seq', 3, true);
+
+COPY public.trabajadores (id_trabajador, nombres, apellidos, email) FROM stdin;
+1	MICHAEL	JACKSON	michaeljackson@gmail.com
+2	FRANCISCO	FLORES	paquitoflores@gmail.com
+3	ENRIQUE	PENA NIETO	penanieto@gmail.com
+4	NAYIB	BUKELE	tionayib@gmail.com
+5	SALVADOR	SANCHEZ CEREN	elprofe@gmail.com
+\.
+--
+-- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.trabajadores_id_trabajador_seq', 5, true);
+
+COPY public.cargo (id_cargo, cargo, descripcion, id_trabajadores) FROM stdin;
+1	ESTUDIANTE	NULL	1
+2	TECNICO	NULL	3
+3	CATEDRATICO	NULL	5
+\.
+--
+-- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.cargo_id_cargo_seq', 3, true);
+
+COPY public.detalle_equipo (id_detalle_equipo, dispositivo, descripcion, id_marca, id_modelo, id_equipo) FROM stdin;
+1	PC	NULL	1	2	3
+2	PC	NULL	1	3	4
+3	IMPRESORA	NULL	1	5	3
+4	PC	NULL	2	3	4
+\.
+--
+-- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.detalle_equipo_id_detalle_equipo_seq', 4, true);
+
+COPY public.tipo_mantenimiento (id_tipo_mantenimiento, tipo_mantenimiento, observaciones) FROM stdin;
+1	PREVENTIDOS PROGRAMADOS	NULL
+2	PREVENTIDOS NO PROGRAMADOS	NULL
+3	CORRECTIVOS	NULL
+\.
+--
+-- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tipo_mantenimiento_id_tipo_mantenimiento_seq', 3, true);
+
+COPY public.solicitud (id_solicitud, fecha, responsable, email, telefono, descripcion, id_equipo, id_tipo_mantenimiento) FROM stdin;
+1	2018-06-11	OSCAR RODRIGUEZ	oscar@gmail.com	76352211	NULL	1	1
+2	2018-06-12	ISMAEL AREVALO	kike@gmail.com	93837363	NULL	1	2
+\.
+--
+-- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tipo_mantenimiento_id_tipo_mantenimiento_seq', 2, true);
+
+
+COPY public.asuetos (id_asueto, fecha, descripcion) FROM stdin;
+1	2018-05-01	DIA DEL TRABAJO
+2	2018-05-10	DIA DE LA MADRE
+\.
+--
+-- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.asuetos_id_asueto_seq', 2, true);
+
+COPY public.calendario (id_calendario, fecha_inicio, decripcion, responsable, telefono, fecha_fin, cantidad, id_asuetos) FROM stdin;
+1	2018-06-05	REALIZAR LIMPIEZA DE PC	OSCAR ROGRIGUEZ	75647464	2018-06-13	1	NULL
+\.
+--
+-- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.calendario_id_calendario_seq', 2, true);
+
+
+COPY public.orden_trabajo (id_orden_trabajo, fecha_inicio, prioridad, id_solicitud, id_calendario) FROM stdin;
+1	2018-06-01	NULL	1	1
+\.
+--
+-- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.orden_trabajo_id_orden_trabajo_seq', 2, true);
+
+
+COPY public.detalle_mantenimiento (id_detalle_mantenimiento, "hardware/software", detalle_harware, detalle_software, id_orden_trabajo) FROM stdin;
+1	HARDWARE	NULL	NULL	1
+\.
+--
+-- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.detalle_mantenimiento_id_detalle_mantenimiento_seq', 2, true);
+
+
+COPY public.estado_detalle_mantenimiento (id_estado_detalle_mantenimiento, estado, observaciones, id_detalle_mantenimiento, id_procedimiento) FROM stdin;
+1	ACTIVO	NULL	1	1
+\.
+--
+-- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.estado_detalle_mantenimiento_id_estado_detalle_mantenimiento_seq', 2, true);
+
+
+COPY public.orden_trabajo_por_trabajadores (detalle, id_trabajadores, id_orden_trabajo) FROM stdin;
+NECESITA LIMPIEZA	1	1
+\.
+--
+-- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 COPY public.modelo (id_modelo, modelo, descripcion) FROM stdin;
