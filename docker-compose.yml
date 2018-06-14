@@ -22,7 +22,7 @@ services:
      - '5430:5432'
    restart: always
    volumes:
-     - postgresManData4:/var/lib/postgresql/data 
+     - postgresManData20:/var/lib/postgresql/data 
    networks:
      - webnet
 
@@ -45,4 +45,4 @@ networks:
  webnet:
 
 volumes:
- postgresManData4:
+ postgresManData20:
